@@ -1,0 +1,21 @@
+{
+  "name": "three-idiots-kurly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd client && npm start",
+    "server": "cd server && nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sm970309/Three-Idiots-Kurly.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sm970309/Three-Idiots-Kurly/issues"
+  },
+  "homepage": "https://github.com/sm970309/Three-Idiots-Kurly#readme"
+}
