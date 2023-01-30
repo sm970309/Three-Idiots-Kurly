@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/sm970309/Three-Idiots-Kurly/issues"
   },
-  "homepage": "https://github.com/sm970309/Three-Idiots-Kurly#readme"
+  "homepage": "https://github.com/sm970309/Three-Idiots-Kurly#readme",
+  "dependencies": {
+    "react-router-dom": "^6.8.0"
+  }
 }
