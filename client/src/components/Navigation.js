@@ -20,6 +20,7 @@ const Navigation = () => {
         </a>
       </div>
       <div className={styles.midBar}>
+
         <button
           onClick={onClick}
           id="market"
@@ -32,6 +33,7 @@ const Navigation = () => {
           id="beauty"
           className={styles.navigationbutton}
         >
+
           뷰티컬리
         </button>
         <SearchBar />
