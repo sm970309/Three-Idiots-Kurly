@@ -1,4 +1,4 @@
-import Navigaion from "./Navigation";
+import Navigaion from "../components/Navigation";
 function Market() {
   return (
     <div>

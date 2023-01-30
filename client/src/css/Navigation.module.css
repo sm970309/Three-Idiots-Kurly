@@ -1,0 +1,22 @@
+.navigationDiv {
+  padding-left: 40px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-right: 40px;
+  color: red;
+}
+.topBar {
+  float: right;
+  font-size: 3px;
+}
+.midbar {
+  float: left;
+}
+
+.navigationbutton {
+  background-color: white;
+  border: transparent;
+  padding: 0px;
+  size: 5px;
+  margin: 5px;
+}
