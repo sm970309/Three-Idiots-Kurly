@@ -13,7 +13,7 @@ div {
   float: left;
 }
 
-button {
+.navigationbutton {
   background-color: white;
   border: transparent;
   padding: 0px;

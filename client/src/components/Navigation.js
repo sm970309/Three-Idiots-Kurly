@@ -20,10 +20,10 @@ const Navigation = () => {
         </a>
       </div>
       <div className={styles.midBar}>
-        <button onClick={onClick} id="market">
+        <button onClick={onClick} id="market" className={styles.navigationbutton}>
           마켓컬리
         </button>
-        <button onClick={onClick} id="beauty">
+        <button onClick={onClick} id="beauty" className={styles.navigationbutton}>
           뷰티컬리
         </button>
         <SearchBar />
