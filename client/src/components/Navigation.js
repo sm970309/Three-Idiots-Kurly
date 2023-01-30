@@ -10,9 +10,9 @@ const Navigation = () => {
   };
 
   return (
-    <div className={styles.div}>
+    <div className={styles.navigationDiv}>
       <div className={styles.topBar}>
-        <a onClick={onClick} id="member/singup">
+        <a onClick={onClick} id="member/signup">
           회원가입
         </a>
         <a onClick={onClick} id="member/login">
@@ -20,10 +20,20 @@ const Navigation = () => {
         </a>
       </div>
       <div className={styles.midBar}>
-        <button onClick={onClick} id="market" className={styles.navigationbutton}>
+
+        <button
+          onClick={onClick}
+          id="market"
+          className={styles.navigationbutton}
+        >
           마켓컬리
         </button>
-        <button onClick={onClick} id="beauty" className={styles.navigationbutton}>
+        <button
+          onClick={onClick}
+          id="beauty"
+          className={styles.navigationbutton}
+        >
+
           뷰티컬리
         </button>
         <SearchBar />
