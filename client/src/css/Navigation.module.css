@@ -1,0 +1,22 @@
+div {
+  padding-left: 40px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-right: 40px;
+  color: gray;
+}
+.topBar {
+  float: right;
+  font-size: 3px;
+}
+.midbar {
+  float: left;
+}
+
+button {
+  background-color: white;
+  border: transparent;
+  padding: 0px;
+  size: 5px;
+  margin: 5px;
+}
