@@ -41,6 +41,11 @@ const Navigation = () => {
             border: "3px solid purple",
           }}
           onClick={onClick}
+          onMouseEnter={
+            (onmouseenter = () => {
+              console.log("on mouse");
+            })
+          }
         />
         <button
           onClick={onClick}
