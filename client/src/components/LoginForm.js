@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import LoginStyles from "../css/Login.module.css";
+import { useNavigate } from "react-router-dom";
 
 const User = {
   id: "abcd",
@@ -50,6 +51,12 @@ const LoginForm = () => {
     }
   };
 
+  let navigate = useNavigate();
+  const onClickSignupButton = (event) => {
+    const changePage = event.target.id;
+    navigate("/" + changePage);
+  };
+
   return (
     <div className={LoginStyles.page}>
       <div className={LoginStyles.titleWrap}>로그인</div>
@@ -89,7 +96,11 @@ const LoginForm = () => {
         </button>
       </div>
       <div>
-        <button className={LoginStyles.signupbutton}>회원가입</button>
+        <button 
+            onClick={onClickSignupButton} id="member/signup"
+            className={LoginStyles.signupbutton}>
+            회원가입
+        </button>
       </div>
     </div>
   );

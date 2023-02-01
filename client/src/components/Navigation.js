@@ -13,12 +13,22 @@ const Navigation = () => {
   return (
     <div className={styles.navigationDiv}>
       <div className={styles.topBar}>
-        <a onClick={onClick} id="member/signup">
-          회원가입
-        </a>
-        <a onClick={onClick} id="member/login">
-          로그인
-        </a>
+        <a className={styles.topBarCursor} onClick={onClick} id="member/signup">회원가입</a>
+        <div className={styles.topBarLine}></div>
+        <a className={styles.topBarCursor} onClick={onClick} id="member/login">로그인</a>
+        <div className={styles.topBarLine}></div>
+        <div>
+          <a className={styles.clientcenter}onClick={onClick} id="member/signup">
+            고객센터
+            <span className={styles.downArrow}></span>
+          </a>
+          <div className={styles.clientcenterBox}>
+            <div className={styles.clientcenterFont}>공지사항</div>
+            <div className={styles.clientcenterFont}>자주하는 질문</div>
+            <div className={styles.clientcenterFont}>1:1 문의</div>
+            <div className={styles.clientcenterFont}>대량주문 문의</div>
+          </div>
+        </div>
       </div>
       <div className={styles.midBar}>
         <img
