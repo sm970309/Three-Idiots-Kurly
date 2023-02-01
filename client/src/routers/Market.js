@@ -1,12 +1,11 @@
 import Navigaion from "../components/Navigation";
-import ShowAllData from "../components/ShowAllData";
+import GoodForm from "../components/GoodForm";
 function Market() {
-  const axios = require("axios");
-
   return (
     <div>
       <Navigaion />
       <h1>market page</h1>
+      <GoodForm />
     </div>
   );
 }
