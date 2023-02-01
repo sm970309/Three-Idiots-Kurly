@@ -1,11 +1,10 @@
 const express = require('express')
 const cors = require('cors')
 const path = require('path')
-
 const bodyParser = require('body-parser')
 const PORT = 8000;
 const app = express();
-
+const upload = require('./components/upload')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
@@ -25,6 +24,7 @@ app.get('/items/:num',(req,res) =>{
 )
 app.get('/items',(req,res) =>{
     res.send('상품페이지')
+    console.log(upload.uploadItem)
 })
 app.post('/test',(req,res)=>{
     console.log(req.body)
