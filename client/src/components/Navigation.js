@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import styles from "../css/Navigation.module.css";
+import THREEIDIOTS_LOGO from "../img/세얼간이_logo.jpg";
 
 const Navigation = () => {
   let navigate = useNavigate();
@@ -20,7 +21,17 @@ const Navigation = () => {
         </a>
       </div>
       <div className={styles.midBar}>
-
+        <img
+          id="market"
+          src={THREEIDIOTS_LOGO}
+          alt="세얼간이_로고"
+          width="100px"
+          height="70px"
+          style={{
+            border: "3px solid purple",
+          }}
+          onClick={onClick}
+        />
         <button
           onClick={onClick}
           id="market"
@@ -33,7 +44,6 @@ const Navigation = () => {
           id="beauty"
           className={styles.navigationbutton}
         >
-
           뷰티컬리
         </button>
         <SearchBar />

@@ -1,5 +1,8 @@
 import Navigaion from "../components/Navigation";
+import ShowAllData from "../components/ShowAllData";
 function Market() {
+  const axios = require("axios");
+
   return (
     <div>
       <Navigaion />

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../css/Signup.module.css";
-// import axios from "axios";
+//
 
 const SingupForm = () => {
   const [userid, setUserId] = useState("");
