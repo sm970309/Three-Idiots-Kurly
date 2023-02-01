@@ -15,7 +15,7 @@ options = webdriver.ChromeOptions()
 # options.add_argument('headless')
 options.add_argument('user-agent='+user_agent)
 driver = webdriver.Chrome(service=chrome_service,chrome_options=options)
-links,items = [],{}
+links = []
 def get_links(page):    
     url = f'https://www.kurly.com/collections/market-best?page={page}'
     driver.get(url)
@@ -29,21 +29,21 @@ def get_links(page):
 def get_items(link,no):
     url,img = link
     driver.get(url)
-    time.sleep(0.5)
+    time.sleep(0.1)
     main = driver.find_element(by=By.TAG_NAME,value="main")
     name = main.find_element(by=By.TAG_NAME,value="h1").text
     price = main.find_element(by=By.XPATH,value="/html/body/div/div/div[3]/div[2]/main/section/h2").text.split('\n')[-2]
-    items[no] = [
-        name,
-        price,
-        img
-    ]
+    items = {
+        "no":no,
+        "name":name,
+        "price":int(price.replace(',','')),
+        "img":img
+    }
+    res = requests.post('http://localhost:8000/uploaditems',json = items)
+    print(res)
 
 for page in tqdm(range(1,4)):
     get_links(page)
 print(f'{len(links)}개 상품')
 for no,link in tqdm(enumerate(links,start=1)):
     get_items(link,no)
-
-res = requests.post('http://localhost:8000/test',data = items)
-print(res)
