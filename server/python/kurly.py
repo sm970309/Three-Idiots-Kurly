@@ -16,6 +16,10 @@ options = webdriver.ChromeOptions()
 options.add_argument('user-agent='+user_agent)
 driver = webdriver.Chrome(service=chrome_service,chrome_options=options)
 links = []
+# 로컬 파일로 json 만들기
+all_items = {}
+all_items['data'] = []
+
 def get_links(page):    
     url = f'https://www.kurly.com/collections/market-best?page={page}'
     driver.get(url)
@@ -39,11 +43,20 @@ def get_items(link,no):
         "price":int(price.replace(',','')),
         "img":img
     }
-    res = requests.post('http://localhost:8000/uploaditems',json = items)
-    print(res)
+    # res = requests.post('http://localhost:8000/uploaditems',json = items)
+    # print(res)
+
+    # 로컬 파일로 json 만들기
+    all_items['data'].append(items)
+    
 
 for page in tqdm(range(1,4)):
     get_links(page)
 print(f'{len(links)}개 상품')
 for no,link in tqdm(enumerate(links,start=1)):
     get_items(link,no)
+
+# 로컬 파일로 json 만들기
+file_path = "./items.json"
+with open(file_path,'w') as f:
+    json.dump(all_items,f)
