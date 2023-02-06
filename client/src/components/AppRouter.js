@@ -4,6 +4,7 @@ import Beatuy from "../routers/Beauty";
 import Home from "../routers/Home";
 import SignUp from "../routers/SignUp";
 import Login from "../routers/Login";
+import Goods from "../routers/Goods";
 
 function AppRouter() {
   return (
@@ -14,6 +15,7 @@ function AppRouter() {
         <Route exact path="/beauty" element={<Beatuy />} />
         <Route exact path="/member/signup" element={<SignUp />} />
         <Route exact path="/member/login" element={<Login />} />
+        <Route exact path="/goods/:id" element={<Goods />} />
       </Routes>
     </BrowserRouter>
   );
