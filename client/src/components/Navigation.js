@@ -22,7 +22,11 @@ const Navigation = () => {
         </a>
         <div className={styles.topBarLine}></div>
         <div>
-          <a className={styles.clientcenter}onClick={onClick} id="member/signup">
+          <a
+            className={styles.clientcenter}
+            onClick={onClick}
+            id="member/signup"
+          >
             고객센터
             <span className={styles.downArrow}></span>
           </a>

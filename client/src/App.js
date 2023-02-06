@@ -1,7 +1,6 @@
 import AppRouter from "./components/AppRouter";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
 const API_KEY = "http://localhost:8000/items";
 
 function App() {
