@@ -5,7 +5,7 @@ function Market() {
     <div>
       <Navigaion />
       <h1>market page</h1>
-      <GoodForm />
+      {/* <GoodForm /> 잠시 대기*/}
     </div>
   );
 }

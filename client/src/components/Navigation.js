@@ -17,7 +17,7 @@ const Navigation = () => {
         <div className={styles.topBarLine}></div>
         <a className={styles.topBarCursor} onClick={onClick} id="member/login">로그인</a>
         <div className={styles.topBarLine}></div>
-        <div>
+        <div className={styles.topBarClient}>
           <a className={styles.clientcenter}onClick={onClick} id="member/signup">
             고객센터
             <span className={styles.downArrow}></span>
