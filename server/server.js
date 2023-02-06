@@ -1,16 +1,21 @@
 const express = require('express')
 const cors = require('cors')
 const path = require('path')
-const fs = require('fs')
 const bodyParser = require('body-parser')
 const PORT = 8000;
 const app = express();
+const upload = require('./components/upload');
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
-const {fb} = require("./components/fb")
-const { getStorage,ref,uploadBytes, getDownloadURL } = require('firebase/storage');
-const storage = getStorage(fb);
+const {fb} = require("./components/fb");
+const {collection,addDoc, getFirestore,doc,getDocs} = require('firebase/firestore');
+const db = getFirestore(fb);
+
+app.use(express.json());
+app.use(express.urlencoded({
+    extended:false
+}))
+// app.use(bodyParser.urlencoded({ extended: false }))
+// app.use(bodyParser.json())
 
 // 서버와 클라이언트 연동 -> 서버에 접속할때는 8000 PORT로 접근
 
@@ -22,24 +27,38 @@ app.get('/items/:num',(req,res) =>{
     num<100?res.json({
         "no":num,
         "image":".jpg",
+        "price":12000,
         "name":"상품 이름"
     }):res.json("상품이 존재하지 않습니다")
 }
 )
-app.get('/items',(req,res) =>{
-    res.send('상품페이지')
-    const itemImageRef = ref(storage,`items/1.jpg`)
-    fs.readFile('item.jpg',(err,data)=>{
-        uploadBytes(itemImageRef,data)
-        console.log(itemImageRef)
+
+// 상품 리스트 반환 API
+app.get('/items',async (req,res) =>{
+    let jsonArray = new Array();
+    const snapshot = await getDocs(collection(db,'items'))
+    snapshot.forEach((doc)=>{
+        jsonArray.push(doc.data())
     })
-    getDownloadURL(itemImageRef).then((url)=>{
-        console.log(url)
-    })
+    res.send(jsonArray)
+
 })
-app.post('/test',(req,res)=>{
-    console.log(req.body)
-    res.send('yes')
+
+// 상품 리스트 등록 API
+app.post('/uploaditems',async( req,res)=>{
+    const {no,name,price,img} = req.body;
+    console.log(no,name,price,img)
+    try{
+        await addDoc(collection(db,'items'),{
+            'no':no,
+            'name':name,
+            'price':price,
+            'img':img
+        })
+        res.send('complete')
+    }catch(e){
+        console.error("Error adding document: ", e);
+    }
 })
 
 app.listen(PORT,() =>{

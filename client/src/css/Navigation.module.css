@@ -1,22 +1,111 @@
 .navigationDiv {
+  position: relative;
+  width: 1050px;
+  height: 100px;
+  margin: 0px auto;
+  /*
   padding-left: 40px;
   padding-top: 1px;
   padding-bottom: 1px;
   padding-right: 40px;
-  color: red;
+  */
+  color: #333;
 }
+
 .topBar {
-  float: right;
-  font-size: 3px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  z-index: 20;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  font-size: 12px;
 }
+
+.topBarLine{
+  width: 1px;
+  height: 13px;
+  margin: 0px 12px;
+  background-color: rgb(217, 217, 217);
+}
+
+.topBarCursor{
+  display: block;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.topBarClient{
+  line-height: 35px;
+  position: relative;
+}
+.downArrow{
+  width: 8px;
+  height: 5px;
+  background-image: url(https://res.kurly.com/pc/ico/1908/ico_down_16x10.png);
+  background-size: cover;
+  background-position: center center;
+  display: inline-block;
+  margin-left: 5px;
+  margin-bottom: 1px;
+}
+
+.clientcenter{
+  display: block;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.clientcenterBox{
+  display: none;
+  position: absolute;
+  right: 0px;
+  top: 34px;
+  width: 120px;
+  padding: 3px 9px;
+  border: 1px solid rgb(221, 221, 221);
+  background-color: rgb(255, 255, 255);
+}
+
+.clientcenterBox:hover {
+  display: block;
+  position: absolute;
+  right: 0px;
+  top: 34px;
+  width: 120px;
+  padding: 3px 9px;
+  border: 1px solid rgb(221, 221, 221);
+  background-color: rgb(255, 255, 255);
+}
+
+.clientcenterFont{
+  display: block;
+  height: 24px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
 .midbar {
   float: left;
 }
 
+.logo{
+  flex: 0 0 82px;
+}
+
 .navigationbutton {
-  background-color: white;
-  border: transparent;
-  padding: 0px;
-  size: 5px;
-  margin: 5px;
+  flex-shrink: 0;
+  margin-left: 20px;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  color: rgb(181, 181, 181);
+  cursor: pointer;
+}
+
+.navigationbutton:active{
+  font-weight: 500;
+  color: rgb(95, 0, 128);
 }
