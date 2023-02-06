@@ -13,12 +13,20 @@ const Navigation = () => {
   return (
     <div className={styles.navigationDiv}>
       <div className={styles.topBar}>
-        <a className={styles.topBarCursor} onClick={onClick} id="member/signup">회원가입</a>
+        <a className={styles.topBarCursor} onClick={onClick} id="member/signup">
+          회원가입
+        </a>
         <div className={styles.topBarLine}></div>
-        <a className={styles.topBarCursor} onClick={onClick} id="member/login">로그인</a>
+        <a className={styles.topBarCursor} onClick={onClick} id="member/login">
+          로그인
+        </a>
         <div className={styles.topBarLine}></div>
-        <div className={styles.topBarClient}>
-          <a className={styles.clientcenter}onClick={onClick} id="member/signup">
+        <div>
+          <a
+            className={styles.clientcenter}
+            onClick={onClick}
+            id="member/signup"
+          >
             고객센터
             <span className={styles.downArrow}></span>
           </a>
@@ -41,11 +49,6 @@ const Navigation = () => {
             border: "3px solid purple",
           }}
           onClick={onClick}
-          onMouseEnter={
-            (onmouseenter = () => {
-              console.log("on mouse");
-            })
-          }
         />
         <button
           onClick={onClick}

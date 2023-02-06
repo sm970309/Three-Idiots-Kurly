@@ -1,11 +1,17 @@
+import ItemList from "../components/ItemList";
 import Navigaion from "../components/Navigation";
-import GoodForm from "../components/GoodForm";
+import PaintItem from "../components/PaintItem";
+import SwiperItems from "../components/SwiperItems";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+const API_KEY = "http://localhost:8000/items";
+
 function Market() {
   return (
     <div>
       <Navigaion />
       <h1>market page</h1>
-      {/* <GoodForm /> 잠시 대기*/}
+      <ItemList />
     </div>
   );
 }
