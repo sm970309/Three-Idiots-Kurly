@@ -1,6 +1,8 @@
+import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../css/Signup.module.css";
+
 //
 
 const SingupForm = () => {
@@ -25,12 +27,14 @@ const SingupForm = () => {
     } else if (name === "useremail") {
       setUserEmail(value);
     } else if (name === "userphone") {
-      setUserPhone(value);
+      const onlyNumber = value.replace(/[^0-9]/g, '')
+      setUserPhone(onlyNumber);
     }
     // else if (name === "sex") {
     //   setSex(value);
     // }
   };
+
   // const onSubmit = async (event) => {
   //   event.preventDefault();
   //   const res = await axios.post("http://localhost:8080/register", {
@@ -53,75 +57,200 @@ const SingupForm = () => {
         style={{ flexDirection: "column", display: "flex", width: "200px" }}
         // onSubmit={onSubmit}
       >
-        <div>
-          <label>아이디</label>
-          <input
-            onChange={onChange}
-            value={userid}
-            name="userid"
-            type="text"
-            placeholder="아이디를 입력해주세요"
-          ></input>
+        <div className={styles.signupTitle}>
+          회원가입
         </div>
+        <div className={styles.signupPage}>
+          <div className={styles.essentialInputBox}>
+            <span className={styles.essentialInputEmo}>*</span>필수입력사항
+          </div>
+          <div className={styles.inputBox}>
+            <div className={styles.elementFlex}>
+              <div className={styles.elementTitle}>
+                <label className={styles.elementFont}>
+                  아이디<span className={styles.essentialInputEmo}>*</span>
+                </label>
+              </div>
+              <div className={styles.Inputflex}>
+                <div className={styles.Inputpadding}>
+                  <div className={styles.Inputposition}>
+                    <input className={styles.Input}
+                    onChange={onChange}
+                    value={userid}
+                    name="userid"
+                    type="text"
+                    placeholder="아이디를 입력해주세요">
+                    </input>
+                  </div>
+                </div>
+              </div>
 
-        <div>
-          <label>비밀번호</label>
-          <input
-            onChange={onChange}
-            value={pw}
-            name="pw"
-            type="password"
-            placeholder="비밀번호를 입력해주세요"
-          ></input>
-        </div>
-        <div>
-          <label>비밀번호확인</label>
-          <input
-            onChange={onChange}
-            value={confirmPw}
-            name="confirmPw"
-            type="password"
-            placeholder="비밀번호를 한번 더 입력해주세요"
-          ></input>
-        </div>
-        <div>
-          <label>이름</label>
-          <input
-            onChange={onChange}
-            value={username}
-            name="username"
-            type="text"
-            placeholder="이름을 입력해 주세요"
-          ></input>
-        </div>
+              <div className={styles.repeatBox}>
+                <button className={styles.repeatButton}>
+                  <span>중복확인</span>
+                </button>
+              </div>
+            </div>
 
-        <div>
-          <label>이메일</label>
-          <input
-            onChange={onChange}
-            value={useremail}
-            name="useremail"
-            type="text"
-            placeholder="예: marketkurly@kurly.com"
-          ></input>
-        </div>
+            <div className={styles.elementFlex}>
+              <div className={styles.elementTitle}>
+                <label className={styles.elementFont}>
+                  비밀번호<span className={styles.essentialInputEmo}>*</span>
+                </label>
+              </div>
+              <div className={styles.Inputflex}>
+                <div className={styles.Inputpadding}>
+                  <div className={styles.Inputposition}>
+                    <input className={styles.Input}
+                    onChange={onChange}
+                    value={pw}
+                    name="pw"
+                    type="text"
+                    placeholder="비밀번호를 입력해주세요">
+                    </input>
+                  </div>
+                </div>
+              </div>
 
-        <div>
-          <label>휴대폰</label>
-          <input
-            onChange={onChange}
-            value={userphone}
-            name="userphone"
-            type="text"
-            placeholder="예: marketkurly@kurly.com"
-          ></input>
-        </div>
+              <div className={styles.repeatBox}>
+              </div>
+            </div>
 
-        <div>
-          <label>주소 어캐만듬?</label>
-        </div>
+            <div className={styles.elementFlex}>
+              <div className={styles.elementTitle}>
+                <label className={styles.elementFont}>
+                  비밀번호확인<span className={styles.essentialInputEmo}>*</span>
+                </label>
+              </div>
+              <div className={styles.Inputflex}>
+                <div className={styles.Inputpadding}>
+                  <div className={styles.Inputposition}>
+                    <input className={styles.Input}
+                    onChange={onChange}
+                    value={confirmPw}
+                    name="confirmPw"
+                    type="text"
+                    placeholder="비밀번호를 한번 더 입력해주세요">
+                    </input>
+                  </div>
+                </div>
+              </div>
 
-        <input type="submit" value="회원가입" />
+              <div className={styles.repeatBox}>
+              </div>
+            </div>
+
+            <div className={styles.elementFlex}>
+              <div className={styles.elementTitle}>
+                <label className={styles.elementFont}>
+                  이름<span className={styles.essentialInputEmo}>*</span>
+                </label>
+              </div>
+              <div className={styles.Inputflex}>
+                <div className={styles.Inputpadding}>
+                  <div className={styles.Inputposition}>
+                    <input className={styles.Input}
+                    onChange={onChange}
+                    value={username}
+                    name="username"
+                    type="text"
+                    placeholder="이름을 입력해 주세요">
+                    </input>
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.repeatBox}>
+              </div>
+            </div>
+
+            <div className={styles.elementFlex}>
+              <div className={styles.elementTitle}>
+                <label className={styles.elementFont}>
+                  이메일<span className={styles.essentialInputEmo}>*</span>
+                </label>
+              </div>
+              <div className={styles.Inputflex}>
+                <div className={styles.Inputpadding}>
+                  <div className={styles.Inputposition}>
+                    <input className={styles.Input}
+                    onChange={onChange}
+                    value={useremail}
+                    name="useremail"
+                    type="text"
+                    placeholder="예: marketkurly@kurly.com">
+                    </input>
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.repeatBox}>
+                <button className={styles.repeatButton}>
+                  <span>중복확인</span>
+                </button>
+              </div>
+            </div>
+
+            <div className={styles.elementFlex}>
+              <div className={styles.elementTitle}>
+                <label className={styles.elementFont}>
+                  휴대폰<span className={styles.essentialInputEmo}>*</span>
+                </label>
+              </div>
+              <div className={styles.Inputflex}>
+                <div className={styles.Inputpadding}>
+                  <div className={styles.Inputposition}>
+                    <input className={styles.Input}
+                    onChange={onChange}
+                    value={userphone}
+                    name="userphone"
+                    type="text"
+                    maxLength="11"
+                    placeholder="숫자만 입력해주세요">
+                    </input>
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.repeatBox}>
+                <button className={styles.repeatButton}>
+                  <span>인증번호 받기</span>
+                </button>
+              </div>
+            </div>
+
+            <div className={styles.elementFlex}>
+              <div className={styles.elementTitle}>
+                <label className={styles.elementFont}>
+                  주소<span className={styles.essentialInputEmo}>*</span>
+                </label>
+              </div>
+              <div className={styles.Inputflex}>
+                <div className={styles.Inputpadding}>
+                  <div className={styles.Inputposition}>
+                    <input className={styles.Input}
+                    onChange={onChange}
+                    value={userphone}
+                    name="userphone"
+                    type="text"
+                    maxLength="11"
+                    placeholder="숫자만 입력해주세요">
+                    </input>
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.repeatBox}>
+                <button className={styles.repeatButton}>
+                  <span>인증번호 받기</span>
+                </button>
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
       </form>
     </div>
   );
