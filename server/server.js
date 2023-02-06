@@ -75,7 +75,7 @@ app.post('/signup',async(req,res)=>{
     })
     
     if (exist==true){
-        res.send({'result':'fail'})
+        res.json({'result':'fail'})
     }else{
         try{
             await addDoc(collection(db,'users'),{
