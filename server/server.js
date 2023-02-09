@@ -5,9 +5,10 @@ const bodyParser = require('body-parser')
 const PORT = 8000;
 const app = express();
 const upload = require('./components/upload');
+const bcrypt = require('bcrypt');
 
 const {fb} = require("./components/fb");
-const {collection,addDoc, getFirestore,doc,getDocs} = require('firebase/firestore');
+const {collection,addDoc, getFirestore,getDocs, where,query} = require('firebase/firestore');
 const db = getFirestore(fb);
 
 app.use(express.json());
@@ -45,7 +46,7 @@ app.get('/items',async (req,res) =>{
 })
 
 // 상품 리스트 등록 API
-app.post('/uploaditems',async( req,res)=>{
+app.post('/uploaditems',async(req,res)=>{
     const {no,name,price,img} = req.body;
     console.log(no,name,price,img)
     try{
@@ -59,6 +60,49 @@ app.post('/uploaditems',async( req,res)=>{
     }catch(e){
         console.error("Error adding document: ", e);
     }
+})
+
+// 회원가입 API
+app.post('/signup',async(req,res)=>{
+    const {id,name,email,phone,address} = req.body;
+    const pw = bcrypt.hashSync(req.body.pw,10);
+
+    let exist = false;
+    const q = query(collection(db,'users'),where("id","==",id))
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        exist = doc.exists();
+    })
+    
+    if (exist==true){
+        res.json({'result':'fail'})
+    }else{
+        try{
+            await addDoc(collection(db,'users'),{
+                "id": id,
+                "pw": pw,
+                "name":name,
+                "email":email,
+                "phone": phone,
+                "address":address
+            })
+            res.json({'result':'success'})
+        }catch(e){
+            console.error("Error adding document: ", e);
+        }
+    }
+
+    
+})
+app.post('/confirmId',async(req,res)=>{
+    const {id} = req.body;
+    let exist = false;
+    const q = query(collection(db,'users'),where("id","==",id))
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        exist = doc.exists();
+    })
+    res.json({"exist":exist})
 })
 
 app.listen(PORT,() =>{
