@@ -9,7 +9,7 @@ function App() {
 
   localStorage.setItem("items", JSON.stringify(items));
   localStorage.setItem("address", JSON.stringify(address));
-  
+
   const getItems = async () => {
     try {
       const response = await axios.get(API_KEY);
