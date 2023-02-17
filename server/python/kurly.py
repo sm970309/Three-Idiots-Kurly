@@ -56,6 +56,7 @@ def get_items(data):
         "price":int(price.replace(',','')),
         "img":img
     }
+
     res = requests.post('http://localhost:8000/uploaditem',json = items)
     print(res)
 
