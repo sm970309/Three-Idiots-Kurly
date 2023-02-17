@@ -47,11 +47,12 @@ app.get('/items',async (req,res) =>{
 
 // 상품 리스트 등록 API
 app.post('/uploaditems',async(req,res)=>{
-    const {no,name,price,img} = req.body;
-    console.log(no,name,price,img)
+    const {no,cat_name,name,price,img} = req.body;
+    console.log(no,cat_name,name,price,img)
     try{
         await addDoc(collection(db,'items'),{
             'no':no,
+            'cat_name':cat_name,
             'name':name,
             'price':price,
             'img':img
@@ -75,7 +76,7 @@ app.post('/signup',async(req,res)=>{
     })
     
     if (exist==true){
-        res.send({'result':'fail'})
+        res.json({'result':'fail'})
     }else{
         try{
             await addDoc(collection(db,'users'),{
