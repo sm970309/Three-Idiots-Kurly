@@ -5,9 +5,8 @@ const PORT = 8000;
 const app = express();
 const bcrypt = require('bcrypt');
 
-const {fb} = require("./components/fb");
 const {collection,addDoc, getFirestore,getDocs, where,query} = require('firebase/firestore');
-const db = getFirestore(fb);
+const item = require("./components/item")
 
 app.use(express.json());
 app.use(express.urlencoded({
@@ -22,32 +21,15 @@ app.use(cors())
 app.use(express.static(path.join(__dirname,'..','client/build')))
 
 // 상품 리스트 반환 API
-app.get('/items',async (req,res) =>{
-    let jsonArray = new Array();
-    const snapshot = await getDocs(collection(db,'items'))
-    snapshot.forEach((doc)=>{
-        jsonArray.push(doc.data())
-    })
-    res.send(jsonArray)
-
+app.get('/items',async(req,res) =>{
+    res.send(await item.getItems())
 })
 
 // 상품 리스트 등록 API
-app.post('/uploaditems',async(req,res)=>{
+app.post('/uploaditem',async(req,res)=>{
     const {no,cat_name,name,price,img} = req.body;
-    console.log(no,cat_name,name,price,img)
-    try{
-        await addDoc(collection(db,'items'),{
-            'no':no,
-            'cat_name':cat_name,
-            'name':name,
-            'price':price,
-            'img':img
-        })
-        res.send('complete')
-    }catch(e){
-        console.error("Error adding document: ", e);
-    }
+    const result = await item.uploadItem(no,cat_name,name,price,img);
+    res.json({"result":result})
 })
 
 // 회원가입 API
