@@ -1,10 +1,8 @@
 const express = require('express')
 const cors = require('cors')
 const path = require('path')
-const bodyParser = require('body-parser')
 const PORT = 8000;
 const app = express();
-const upload = require('./components/upload');
 const bcrypt = require('bcrypt');
 
 const {fb} = require("./components/fb");
@@ -22,17 +20,6 @@ app.use(express.urlencoded({
 
 app.use(cors())
 app.use(express.static(path.join(__dirname,'..','client/build')))
-
-app.get('/items/:num',(req,res) =>{
-    const {num} = req.params
-    num<100?res.json({
-        "no":num,
-        "image":".jpg",
-        "price":12000,
-        "name":"상품 이름"
-    }):res.json("상품이 존재하지 않습니다")
-}
-)
 
 // 상품 리스트 반환 API
 app.get('/items',async (req,res) =>{
