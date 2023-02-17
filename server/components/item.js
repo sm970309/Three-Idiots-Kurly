@@ -1,6 +1,5 @@
 const { fb } = require("./fb");
 const { collection, addDoc, getFirestore, getDocs, where, query } = require('firebase/firestore');
-const { async } = require("@firebase/util");
 const db = getFirestore(fb);
 
 
