@@ -3,9 +3,7 @@ const cors = require('cors')
 const path = require('path')
 const PORT = 8000;
 const app = express();
-const bcrypt = require('bcrypt');
 
-const {collection,addDoc, getFirestore,getDocs, where,query} = require('firebase/firestore');
 const item = require("./components/item")
 const user = require("./components/user")
 
@@ -45,6 +43,7 @@ app.post('/signup',async(req,res)=>{
     }
     
 })
+// ID 중복체크
 app.post('/confirmId',async(req,res)=>{
     const {id} = req.body;
     const exist = await user.confirmId(id);
