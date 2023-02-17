@@ -7,6 +7,7 @@ const bcrypt = require('bcrypt');
 
 const {collection,addDoc, getFirestore,getDocs, where,query} = require('firebase/firestore');
 const item = require("./components/item")
+const user = require("./components/user")
 
 app.use(express.json());
 app.use(express.urlencoded({
@@ -34,44 +35,19 @@ app.post('/uploaditem',async(req,res)=>{
 
 // 회원가입 API
 app.post('/signup',async(req,res)=>{
-    const {id,name,email,phone,address} = req.body;
-    const pw = bcrypt.hashSync(req.body.pw,10);
-
-    let exist = false;
-    const q = query(collection(db,'users'),where("id","==",id))
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-        exist = doc.exists();
-    })
-    
+    const {id,pw,name,email,phone,address} = req.body;
+    const exist = await user.confirmId(id);
     if (exist==true){
         res.json({'result':'fail'})
     }else{
-        try{
-            await addDoc(collection(db,'users'),{
-                "id": id,
-                "pw": pw,
-                "name":name,
-                "email":email,
-                "phone": phone,
-                "address":address
-            })
-            res.json({'result':'success'})
-        }catch(e){
-            console.error("Error adding document: ", e);
-        }
+        const result = user.signup(id,pw,name,email,phone,address)
+        res.json({'result':result})
     }
-
     
 })
 app.post('/confirmId',async(req,res)=>{
     const {id} = req.body;
-    let exist = false;
-    const q = query(collection(db,'users'),where("id","==",id))
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-        exist = doc.exists();
-    })
+    const exist = await user.confirmId(id);
     res.json({"exist":exist})
 })
 
