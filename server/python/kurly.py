@@ -56,7 +56,8 @@ def get_items(data):
         "price":int(price.replace(',','')),
         "img":img
     }
-    res = requests.post('http://localhost:8000/uploaditems',json = items)
+
+    res = requests.post('http://localhost:8000/uploaditem',json = items)
     print(res)
 
     # 로컬 파일로 json 만들기
