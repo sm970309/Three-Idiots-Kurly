@@ -21,13 +21,13 @@ function PaintItem({ items }) {
   // ));
 
   return (
-    <div key={items.no} onClick={onClick}>
+    <a key={items.no} onClick={onClick}>
       <img id={items.no} src={items.img} width="249px" height="320px" />
       <h3 id={items.no} size="12px">
         {items.name}
       </h3>
       <span id={items.no}>{items.price}원</span>
-    </div>
+    </a>
   );
 }
 

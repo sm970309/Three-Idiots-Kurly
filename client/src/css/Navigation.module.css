@@ -1,18 +1,23 @@
-.navigationDiv {
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.topBar {
   position: relative;
   width: 1050px;
   height: 100px;
   margin: 0px auto;
-  /*
-  padding-left: 40px;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  padding-right: 40px;
-  */
-  color: #333;
+  letter-spacing: -0.3px;
 }
 
-.topBar {
+.topBarLine {
+  width: 1px;
+  height: 13px;
+  margin: 0px 12px;
+  background-color: rgb(217, 217, 217);
+}
+.topUserBar {
   position: absolute;
   right: 0px;
   top: 0px;
@@ -22,25 +27,23 @@
   align-items: center;
   font-size: 12px;
 }
-
-.topBarLine{
-  width: 1px;
-  height: 13px;
-  margin: 0px 12px;
-  background-color: rgb(217, 217, 217);
+.topUserOption {
+  display: block;
+  color: rgb(95, 0, 128);
+  cursor: pointer;
+  vertical-align: middle;
 }
-
-.topBarCursor{
+.topBarCursor {
   display: block;
   cursor: pointer;
   vertical-align: middle;
 }
 
-.topBarClient{
+.topBarClient {
   line-height: 35px;
   position: relative;
 }
-.downArrow{
+.downArrow {
   width: 8px;
   height: 5px;
   background-image: url(https://res.kurly.com/pc/ico/1908/ico_down_16x10.png);
@@ -51,13 +54,12 @@
   margin-bottom: 1px;
 }
 
-.clientcenter{
-  display: block;
-  cursor: pointer;
-  vertical-align: middle;
+.clientcenter {
+  line-height: 35px;
+  position: relative;
 }
 
-.clientcenterBox{
+.clientcenterBox {
   display: none;
   position: absolute;
   right: 0px;
@@ -79,22 +81,34 @@
   background-color: rgb(255, 255, 255);
 }
 
-.clientcenterFont{
+.clientcenterFont {
   display: block;
   height: 24px;
   line-height: 24px;
   cursor: pointer;
 }
 
-.midbar {
-  float: left;
+.midBar {
+  height: 100px;
+  padding-top: 36px;
+}
+.midChoiceBar {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  height: 63px;
 }
 
-.logo{
+.logo {
   flex: 0 0 82px;
 }
 
-.navigationbutton {
+.midBarButton:hover {
+  font-weight: 500;
+  color: rgb(95, 0, 128);
+}
+
+.midBarButton {
   flex-shrink: 0;
   margin-left: 20px;
   font-size: 18px;
@@ -103,9 +117,129 @@
   letter-spacing: normal;
   color: rgb(181, 181, 181);
   cursor: pointer;
+  overflow: visible;
+  background-color: transparent;
+  border: none;
+}
+.midBarButton::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 14px;
+  margin-top: 5px;
+  margin-left: 11px;
+  background-color: rgb(226, 226, 226);
+}
+.searchDiv {
+  position: relative;
+  width: 1050px;
+  margin: 0px auto;
+}
+.searchBar {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  position: absolute;
+  left: 325px;
+  top: -55px;
+  width: 400px;
+  height: 48px;
+  padding-left: 14px;
+  border: 1px solid rgb(95, 0, 128);
+  border-radius: 6px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgb(247 247 247) 0px 0px 0px 1px inset;
 }
 
-.navigationbutton:active{
+.searchInput {
+  width: 300px;
+  background-color: inherit;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  letter-spacing: -0.33px;
+}
+.tmpDiv {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  position: absolute;
+  right: -6px;
+  top: -49px;
+}
+
+.lowDiv {
+  min-width: 1050px;
+  letter-spacing: -0.3px;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  box-shadow: rgb(0 0 0 / 7%) 0px 3px 4px 0px;
+  width: 100%;
+  z-index: 10;
+}
+
+.lowBar {
+  position: relative;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  width: 1050px;
+  height: 56px;
+  margin: 0px auto;
+}
+
+.lowCategoryDiv {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  height: 100%;
+}
+
+.CategoryBar {
+  width: 16px;
+  height: 14px;
+  margin-right: 14px;
+  background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNiAxNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0wIDBoMTZ2MS43SDBWMHptMCA2LjE1aDE2djEuN0gwdi0xLjd6bTAgNi4xNWgxNlYxNEgwdi0xLjd6IiBmaWxsPSIjMzMzIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz4KPC9zdmc+Cg==)
+    0px 0px / 16px 14px no-repeat;
+}
+
+.lowUl {
+  display: flex;
+  margin-left: 30px;
+  list-style-type: none;
+}
+.lowLi {
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  width: 150px;
+  height: 55px;
+  padding-top: 18px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.lowSpan {
+  height: fit-content;
+  font-size: 16px;
   font-weight: 500;
-  color: rgb(95, 0, 128);
+  color: rgb(51, 51, 51);
+  cursor: pointer;
+}
+
+.tmpDiv3 {
+  min-height: 56px;
+  display: none;
+}
+.tmpDiv2 {
+  height: 32px;
+  padding: 6px 16px;
+  border-radius: 18px;
+  border: 1px solid rgb(238, 238, 238);
+  color: rgb(102, 102, 102);
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: -0.32px;
 }
