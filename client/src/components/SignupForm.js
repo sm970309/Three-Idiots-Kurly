@@ -1,54 +1,87 @@
-import React from "react";
-import { useState } from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import PopupDom from '../components/PopupDom';
+import PopupPostCode from '../components/PopupPostCode';
 import styles from "../css/Signup.module.css";
 
-//
-
 const SingupForm = () => {
-  const [userid, setUserId] = useState("");
+  const [id, setUserId] = useState("");
   const [pw, setPw] = useState("");
   const [confirmPw, setConfirmPw] = useState("");
-  const [username, setUserName] = useState("");
-  const [useremail, setUserEmail] = useState("");
-  const [userphone, setUserPhone] = useState("");
-  // const [sex, setSex] = useState("");
+  const [name, setUserName] = useState("");
+  const [email, setUserEmail] = useState("");
+  const [phone, setUserPhone] = useState("");
+  const [address, setUserAddress] = useState(''); // 주소
+  const [addressDetail, setAddressDetail] = useState(''); // 상세주소
+  
+  // 팝업창 상태 관리
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
+ 
+	// 팝업창 열기
+  const openPostCode = () => {
+      setIsPopupOpen(true)
+  }
+ 
+	// 팝업창 닫기
+  const closePostCode = () => {
+      setIsPopupOpen(false)
+  }
+
   let navigate = useNavigate();
   const onChange = (event) => {
     const { name, value } = event.target;
-    if (name === "userid") {
+    if (name === "id") {
       setUserId(value);
     } else if (name === "pw") {
       setPw(value);
     } else if (name === "confirmPw") {
       setConfirmPw(value);
-    } else if (name === "username") {
+    } else if (name === "name") {
       setUserName(value);
-    } else if (name === "useremail") {
+    } else if (name === "email") {
       setUserEmail(value);
-    } else if (name === "userphone") {
+    } else if (name === "phone") {
       const onlyNumber = value.replace(/[^0-9]/g, '')
       setUserPhone(onlyNumber);
+    } else if (name == "address"){
+      const temp = "서울시 양천구";
+      setUserAddress(temp);
     }
     // else if (name === "sex") {
     //   setSex(value);
     // }
   };
 
-  // const onSubmit = async (event) => {
-  //   event.preventDefault();
-  //   const res = await axios.post("http://localhost:8080/register", {
-  //     username: username,
-  //     userid: userid,
-  //     pw: pw,
-  //   });
-  //   if (res.data === "fail") {
-  //     window.alert("회원가입 실패");
-  //   } else if (res.data === "success") {
-  //     window.alert("회원가입 성공");
-  //     navigate("/login");
-  //   }
-  // };
+  let userInfo = {
+    'name' : name,
+    'email': email,
+    'id':id,
+    'pw':pw,
+    'phone':phone,
+    'address':address,
+  };
+
+  const register = (event) => {
+    event.preventDefault();
+    JSON.stringify(userInfo);
+    axios.post('http://localhost:8000/signup', {
+    'name': name,
+    'email': email,
+    'id':id,
+    'pw':pw,
+    'phone':phone,
+    'address':address,
+  })
+  .then(response => {
+    console.log(response);
+  })
+  .catch(error => {
+    // Handle error.
+    console.log('An error occurred:', error.response);
+  });
+  };
+
   return (
     <div>
       <form
@@ -76,8 +109,8 @@ const SingupForm = () => {
                   <div className={styles.Inputposition}>
                     <input className={styles.Input}
                     onChange={onChange}
-                    value={userid}
-                    name="userid"
+                    value={id}
+                    name="id"
                     type="text"
                     placeholder="아이디를 입력해주세요">
                     </input>
@@ -105,7 +138,7 @@ const SingupForm = () => {
                     onChange={onChange}
                     value={pw}
                     name="pw"
-                    type="text"
+                    type="password"
                     placeholder="비밀번호를 입력해주세요">
                     </input>
                   </div>
@@ -129,7 +162,7 @@ const SingupForm = () => {
                     onChange={onChange}
                     value={confirmPw}
                     name="confirmPw"
-                    type="text"
+                    type="password"
                     placeholder="비밀번호를 한번 더 입력해주세요">
                     </input>
                   </div>
@@ -151,8 +184,8 @@ const SingupForm = () => {
                   <div className={styles.Inputposition}>
                     <input className={styles.Input}
                     onChange={onChange}
-                    value={username}
-                    name="username"
+                    value={name}
+                    name="name"
                     type="text"
                     placeholder="이름을 입력해 주세요">
                     </input>
@@ -175,8 +208,8 @@ const SingupForm = () => {
                   <div className={styles.Inputposition}>
                     <input className={styles.Input}
                     onChange={onChange}
-                    value={useremail}
-                    name="useremail"
+                    value={email}
+                    name="addressdetail"
                     type="text"
                     placeholder="예: marketkurly@kurly.com">
                     </input>
@@ -202,8 +235,8 @@ const SingupForm = () => {
                   <div className={styles.Inputposition}>
                     <input className={styles.Input}
                     onChange={onChange}
-                    value={userphone}
-                    name="userphone"
+                    value={phone}
+                    name="phone"
                     type="text"
                     maxLength="11"
                     placeholder="숫자만 입력해주세요">
@@ -228,28 +261,62 @@ const SingupForm = () => {
               <div className={styles.Inputflex}>
                 <div className={styles.Inputpadding}>
                   <div className={styles.Inputposition}>
-                    <input className={styles.Input}
+                    <button className={styles.addressButton}
                     onChange={onChange}
-                    value={userphone}
-                    name="userphone"
-                    type="text"
-                    maxLength="11"
-                    placeholder="숫자만 입력해주세요">
+                    onClick={openPostCode}
+                    value={address}
+                    name="address"
+                    type="button">
+                      <span className={styles.addressSpan}>
+                        <img src="https://res.kurly.com/pc/service/cart/2007/ico_search.svg" className={styles.addressImg}></img>
+                        주소 검색
+                      </span>
+                    </button>
+                    <div id='popupDom'>
+                        {isPopupOpen && (
+                            <PopupDom>
+                                <PopupPostCode onClose={closePostCode} address={address}/>
+                            </PopupDom>
+                        )}
+                    </div>
+                    <span className={styles.addressNotice}>
+                      배송지에 따라 상품 정보가 달라질 수 있습니다.
+                    </span>
+                  </div>
+                </div>
+              </div>
+                <div className={styles.repeatBox}>
+            
+                </div>
+            </div>
+          </div>
+
+          <div className={styles.elementFlex}>
+              <div className={styles.elementTitle}>
+                <label className={styles.elementFont}>
+                 
+                </label>
+              </div>
+              <div className={styles.Inputflex}>
+                <div className={styles.Inputpadding}>
+                  <div className={styles.Inputposition}>
+                    <input className={styles.Input}
+                    type="text">
+                      
                     </input>
                   </div>
                 </div>
               </div>
 
               <div className={styles.repeatBox}>
-                <button className={styles.repeatButton}>
-                  <span>인증번호 받기</span>
-                </button>
+              
               </div>
             </div>
 
-
+          
+          <div className={styles.signupDiv}>
+              <button onClick={() => {register()}}>가입하기</button>
           </div>
-
         </div>
       </form>
     </div>

@@ -7,15 +7,13 @@ function SearchBar() {
     console.log(keyword);
   };
   return (
-    <div>
       <input
         type="text"
         id="keyword"
         value={keyword}
-        placeholder="검색을 입력해주세요"
+        placeholder="검색어를 입력해주세요"
         onChange={onChange}
       ></input>
-    </div>
   );
 }
 
