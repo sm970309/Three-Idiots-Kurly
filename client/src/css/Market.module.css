@@ -1,0 +1,42 @@
+.SectionDiv {
+  width: 1050px;
+  margin: 0px auto;
+  padding: 40px 0px;
+}
+.SectionTitleDiv {
+  margin-bottom: 27px;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.SectionTitleA {
+  position: relative;
+  display: flex;
+  padding: 8px 0px 8px 8px;
+  cursor: pointer;
+}
+.SectionTitle {
+  color: rgb(51, 51, 51);
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: -0.26px;
+  font-weight: 500;
+}
+.SectionSubTitle {
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.45;
+  letter-spacing: -0.2px;
+  text-align: center;
+  color: rgb(153, 153, 153);
+  margin-top: 2px;
+}
+
+.SwiperDiv {
+  position: relative;
+  width: 1050px;
+  margin: 0px auto;
+}
