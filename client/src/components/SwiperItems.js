@@ -6,17 +6,17 @@ import "swiper/swiper.min.css";
 import "swiper/components/navigation/navigation.min.css";
 import "swiper/components/pagination/pagination.min.css";
 import PaintItem from "./PaintItem";
+
 const SwiperItems = ({ items }) => {
-  console.log({ items });
   return (
-    <div className="App">
+    <div style={{ marginTop: "20px", width: "1050px", margin: "0px auto" }}>
       <Swiper
         modules={[Navigation, Pagination]}
         spaceBetween={50}
-        slidesPerView={3}
-        navigation
+        slidesPerView={4}
+        navigations
         pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
+        scrollbar={{ draggable: false }}
       >
         <div>
           {items &&
