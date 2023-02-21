@@ -19,6 +19,9 @@ const PopupPostCode = (props) => {
         console.log(data)
         console.log(fullAddress)
         console.log(data.zonecode)
+
+        localStorage.setItem("address", JSON.stringify(fullAddress));
+        
         props.onClose()
     }
  

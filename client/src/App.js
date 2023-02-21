@@ -5,10 +5,8 @@ const API_KEY = "http://localhost:8000/items";
 
 function App() {
   let [items, setItems] = useState(null);
-  let [address, setAddress] = useState(null);
 
   localStorage.setItem("items", JSON.stringify(items));
-  localStorage.setItem("address", JSON.stringify(address));
 
   const getItems = async () => {
     try {
