@@ -1,0 +1,40 @@
+.SectionSaleDiv {
+  width: 1050px;
+  margin: 0px auto;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  padding: 80px 0px;
+}
+
+.h2Font {
+  padding-top: 1px;
+  font-size: 28px;
+  color: rgb(51, 51, 51);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.26px;
+}
+.h3Font {
+  padding-top: 11px;
+  font-size: 16px;
+  color: rgb(153, 153, 153);
+  font-weight: normal;
+  line-height: 1.3;
+  letter-spacing: normal;
+}
+.timerDiv {
+  display: flex;
+  padding: 24px 0px 6px;
+}
+.timeUnit {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 136px;
+  font-size: 32px;
+  font-weight: 800;
+  color: rgb(51, 51, 51);
+}

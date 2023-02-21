@@ -1,0 +1,69 @@
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+button {
+  overflow: visible;
+  background-color: transparent;
+  border: none;
+}
+.PaintItemA {
+  display: block;
+  color: rgb(51, 51, 51);
+  cursor: pointer;
+  width: 249px;
+}
+.ImageDiv {
+  height: 320px;
+  overflow: hidden;
+  position: relative;
+  background-color: rgb(245, 245, 245);
+}
+.ItemImage {
+  position: absolute;
+  inset: -100%;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  object-fit: cover;
+  background-color: rgb(238, 238, 238);
+  transition: all 0.5s ease-in-out 0s;
+  border: 0;
+  vertical-align: top;
+  max-width: 100%;
+}
+.BasketIconBtn {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10;
+}
+.BasketIcon {
+  width: 45px;
+  height: 45px;
+}
+.ItemInfoDiv {
+  position: relative;
+  padding: 14px 10px 0px 0px;
+}
+.ItemName {
+  font-size: 16px;
+  line-height: 1.45;
+  font-weight: 400;
+  margin-bottom: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  letter-spacing: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+.ItemPrice {
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.5;
+  white-space: nowrap;
+}

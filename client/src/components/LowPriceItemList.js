@@ -4,11 +4,19 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import SwiperItems from "./SwiperItems";
 
-const ItemList = () => {
+const LowPriceItemList = () => {
   let items = JSON.parse(localStorage.getItem("items"));
-  items = items.slice(0, 20);
+  let resultItem = [];
 
+  const classfyItem = () => {
+    items &&
+      items.map((item) => {
+        if (item.price <= 10000) return resultItem.push(item);
+      });
+  };
+  classfyItem();
+  items = resultItem;
   // return <PaintItem items={items} />;
   return <SwiperItems items={items} />;
 };
-export default ItemList;
+export default LowPriceItemList;
