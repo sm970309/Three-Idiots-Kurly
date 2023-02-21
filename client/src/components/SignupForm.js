@@ -314,7 +314,7 @@ const SingupForm = () => {
                 <div className={styles.Inputflex}>
                   <div className={styles.Inputpadding}>
                     <div className={styles.Inputposition}>
-                      <input className={styles.Input}.display=none placeholder="나머지 주소를 입력해주세요"
+                      <input placeholder="나머지 주소를 입력해주세요"
                       type="text">
                         
                       </input>
