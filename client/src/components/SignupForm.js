@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import PopupDom from '../components/PopupDom';
-import PopupPostCode from '../components/PopupPostCode';
+import PopupDom from "../components/PopupDom";
+import PopupPostCode from "../components/PopupPostCode";
 import styles from "../css/Signup.module.css";
 
 const SingupForm = () => {
@@ -22,14 +22,14 @@ const SingupForm = () => {
   let finalAddress = firstAddress + " " + secondAddress;
   
   // 팝업창 상태 관리
-  const [isPopupOpen, setIsPopupOpen] = useState(false)
- 
-	// 팝업창 열기
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  // 팝업창 열기
   const openPostCode = () => {
-      setIsPopupOpen(true)
-  }
- 
-	// 팝업창 닫기
+    setIsPopupOpen(true);
+  };
+
+  // 팝업창 닫기
   const closePostCode = () => {
       setIsPopupOpen(false)
   }
@@ -50,7 +50,7 @@ const SingupForm = () => {
     } else if (name === "email") {
       setUserEmail(value);
     } else if (name === "phone") {
-      const onlyNumber = value.replace(/[^0-9]/g, '')
+      const onlyNumber = value.replace(/[^0-9]/g, "");
       setUserPhone(onlyNumber);
     } else if (name == "secondAddress"){
       setUserSecondAddress(value);
@@ -94,9 +94,7 @@ const SingupForm = () => {
         style={{ flexDirection: "column", display: "flex", width: "200px" }}
         // onSubmit={onSubmit}
       >
-        <div className={styles.signupTitle}>
-          회원가입
-        </div>
+        <div className={styles.signupTitle}>회원가입</div>
         <div className={styles.signupPage}>
           <div className={styles.essentialInputBox}>
             <span className={styles.essentialInputEmo}>*</span>필수입력사항
@@ -111,13 +109,14 @@ const SingupForm = () => {
               <div className={styles.Inputflex}>
                 <div className={styles.Inputpadding}>
                   <div className={styles.Inputposition}>
-                    <input className={styles.Input}
-                    onChange={onChange}
-                    value={id}
-                    name="id"
-                    type="text"
-                    placeholder="아이디를 입력해주세요">
-                    </input>
+                    <input
+                      className={styles.Input}
+                      onChange={onChange}
+                      value={id}
+                      name="id"
+                      type="text"
+                      placeholder="아이디를 입력해주세요"
+                    ></input>
                   </div>
                 </div>
               </div>
@@ -138,43 +137,44 @@ const SingupForm = () => {
               <div className={styles.Inputflex}>
                 <div className={styles.Inputpadding}>
                   <div className={styles.Inputposition}>
-                    <input className={styles.Input}
-                    onChange={onChange}
-                    value={pw}
-                    name="pw"
-                    type="password"
-                    placeholder="비밀번호를 입력해주세요">
-                    </input>
+                    <input
+                      className={styles.Input}
+                      onChange={onChange}
+                      value={pw}
+                      name="pw"
+                      type="password"
+                      placeholder="비밀번호를 입력해주세요"
+                    ></input>
                   </div>
                 </div>
               </div>
 
-              <div className={styles.repeatBox}>
-              </div>
+              <div className={styles.repeatBox}></div>
             </div>
 
             <div className={styles.elementFlex}>
               <div className={styles.elementTitle}>
                 <label className={styles.elementFont}>
-                  비밀번호확인<span className={styles.essentialInputEmo}>*</span>
+                  비밀번호확인
+                  <span className={styles.essentialInputEmo}>*</span>
                 </label>
               </div>
               <div className={styles.Inputflex}>
                 <div className={styles.Inputpadding}>
                   <div className={styles.Inputposition}>
-                    <input className={styles.Input}
-                    onChange={onChange}
-                    value={confirmPw}
-                    name="confirmPw"
-                    type="password"
-                    placeholder="비밀번호를 한번 더 입력해주세요">
-                    </input>
+                    <input
+                      className={styles.Input}
+                      onChange={onChange}
+                      value={confirmPw}
+                      name="confirmPw"
+                      type="password"
+                      placeholder="비밀번호를 한번 더 입력해주세요"
+                    ></input>
                   </div>
                 </div>
               </div>
 
-              <div className={styles.repeatBox}>
-              </div>
+              <div className={styles.repeatBox}></div>
             </div>
 
             <div className={styles.elementFlex}>
@@ -186,19 +186,19 @@ const SingupForm = () => {
               <div className={styles.Inputflex}>
                 <div className={styles.Inputpadding}>
                   <div className={styles.Inputposition}>
-                    <input className={styles.Input}
-                    onChange={onChange}
-                    value={name}
-                    name="name"
-                    type="text"
-                    placeholder="이름을 입력해 주세요">
-                    </input>
+                    <input
+                      className={styles.Input}
+                      onChange={onChange}
+                      value={name}
+                      name="name"
+                      type="text"
+                      placeholder="이름을 입력해 주세요"
+                    ></input>
                   </div>
                 </div>
               </div>
 
-              <div className={styles.repeatBox}>
-              </div>
+              <div className={styles.repeatBox}></div>
             </div>
 
             <div className={styles.elementFlex}>
@@ -234,14 +234,15 @@ const SingupForm = () => {
               <div className={styles.Inputflex}>
                 <div className={styles.Inputpadding}>
                   <div className={styles.Inputposition}>
-                    <input className={styles.Input}
-                    onChange={onChange}
-                    value={phone}
-                    name="phone"
-                    type="text"
-                    maxLength="11"
-                    placeholder="숫자만 입력해주세요">
-                    </input>
+                    <input
+                      className={styles.Input}
+                      onChange={onChange}
+                      value={phone}
+                      name="phone"
+                      type="text"
+                      maxLength="11"
+                      placeholder="숫자만 입력해주세요"
+                    ></input>
                   </div>
                 </div>
               </div>
@@ -274,7 +275,7 @@ const SingupForm = () => {
                             
                             {isPopupOpen && (
                                 <PopupDom>
-                                    <PopupPostCode onClose={closePostCode}/>
+                                  <PopupPostCode onClose={closePostCode} />
                                 </PopupDom>
                             )}
                           </div>
@@ -296,13 +297,11 @@ const SingupForm = () => {
                                 </PopupDom>
                             )}
                         </div> */}
-                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-                <div className={styles.repeatBox}>
-            
-                </div>
+              <div className={styles.repeatBox}></div>
             </div>
           </div>
 
@@ -326,15 +325,20 @@ const SingupForm = () => {
                     </div>
                   </div>
                 </div>
-              
-              <div className={styles.repeatBox}>
-              
               </div>
             </div>
 
-          
+            <div className={styles.repeatBox}></div>
+          </div>
+
           <div className={styles.signupDiv}>
-              <button onClick={() => {register()}}>가입하기</button>
+            <button
+              onClick={() => {
+                register();
+              }}
+            >
+              가입하기
+            </button>
           </div>
         </div>
       </form>
