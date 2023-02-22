@@ -1,5 +1,5 @@
 const { fb } = require("./fb");
-const { collection, addDoc, getFirestore, getDocs, where, query } = require('firebase/firestore');
+const { collection, addDoc, getFirestore, getDocs } = require('firebase/firestore');
 const db = getFirestore(fb);
 
 
@@ -9,7 +9,6 @@ exports.getItems = async () => {
     snapshot.forEach((doc) => {
         jsonArray.push(doc.data())
     })
-    console.log(jsonArray)
     return jsonArray;
 }
 
