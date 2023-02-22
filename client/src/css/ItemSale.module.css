@@ -38,3 +38,95 @@
   font-weight: 800;
   color: rgb(51, 51, 51);
 }
+.timeSpan:not(:last-of-type) {
+  margin-right: 10px;
+}
+.timeSpan:not(:last-of-type)::after {
+  content: ":";
+  position: absolute;
+  width: 11px;
+  height: 50px;
+  top: 0px;
+  right: -11px;
+  font-size: 25px;
+}
+.timeSpan {
+  position: relative;
+  flex-shrink: 0;
+  min-width: 38px;
+  line-height: 47px;
+}
+.pFont {
+  padding-top: 26px;
+  font-size: 14px;
+  color: rgb(204, 204, 204);
+  font-weight: normal;
+  line-height: 1.43;
+  letter-spacing: -0.4px;
+}
+.saleItemDiv {
+  display: flex;
+  gap: 18px;
+}
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+button {
+  overflow: visible;
+  background-color: transparent;
+  border: none;
+}
+.PaintItemA {
+  width: 694px;
+  cursor: pointer;
+}
+.ImageDiv {
+  height: 347px;
+  overflow: hidden;
+  position: relative;
+  background-color: rgb(245, 245, 245);
+}
+.ImageDiv::before {
+  content: "";
+  position: absolute;
+  inset: 0px;
+}
+.ItemImage {
+  position: absolute;
+  inset: -100%;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  object-fit: cover;
+  background-color: rgb(238, 238, 238);
+  transition: all 0.5s ease-in-out 0s;
+}
+.BasketIconBtn {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10;
+}
+.BasketIcon {
+  width: 45px;
+  height: 45px;
+}
+.ItemInfoDiv {
+  position: relative;
+  padding: 15px 0px 0px;
+}
+.ItemName {
+  margin-bottom: 7px;
+  font-size: 16px;
+  line-height: 1.45;
+  color: rgb(51, 51, 51);
+  font-weight: 400;
+}
+.ItemPrice {
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.5;
+  white-space: nowrap;
+}

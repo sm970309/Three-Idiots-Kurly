@@ -3,6 +3,7 @@ import Navigaion from "../components/Navigation";
 import React, { useEffect, useState } from "react";
 import styles from "../css/Market.module.css";
 import LowPriceItemList from "../components/LowPriceItemList";
+import ItemSale from "../components/ItemSale";
 function Market() {
   return (
     <div>
@@ -20,6 +21,7 @@ function Market() {
           </div>
         </div>
       </div>
+      <ItemSale />
 
       <div style={{ height: "auto" }}>
         <div className={styles.SectionDiv}>
