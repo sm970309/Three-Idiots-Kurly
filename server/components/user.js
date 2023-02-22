@@ -1,6 +1,7 @@
 const { fb } = require("./fb");
 const { collection, addDoc, getFirestore, getDocs, where, query } = require('firebase/firestore');
 const db = getFirestore(fb);
+const bcrypt = require('bcrypt');
 
 exports.confirmId =async (id)=>{
     let exist = false;
