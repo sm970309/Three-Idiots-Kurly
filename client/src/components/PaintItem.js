@@ -10,16 +10,6 @@ function PaintItem({ items }) {
     navigate("/goods/" + changePage);
   };
 
-  // return items.map((item) => (
-  //   <div key={item.no} onClick={onClick}>
-  //     <img id={item.no} src={item.img} width="249px" height="320px" />
-  //     <h3 id={item.no} size="12px">
-  //       {item.name}
-  //     </h3>
-  //     <span id={item.no}>{item.price}원</span>
-  //   </div>
-  // ));
-
   return (
     <a className={styles.PaintItemA} key={items.no} onClick={onClick}>
       <div className={styles.ImageDiv}>
