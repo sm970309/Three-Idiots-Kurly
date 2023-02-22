@@ -12,8 +12,14 @@ const SingupForm = () => {
   const [name, setUserName] = useState("");
   const [email, setUserEmail] = useState("");
   const [phone, setUserPhone] = useState("");
-  const [address, setUserAddress] = useState(''); // 주소
-  const [addressDetail, setAddressDetail] = useState(''); // 상세주소
+
+  const API_KEY = 'http://localhost:8000/signup';
+
+  let firstAddress = JSON.parse(localStorage.getItem("address"));
+
+  const [secondAddress, setUserSecondAddress] = useState("");
+
+  let finalAddress = firstAddress + " " + secondAddress;
   
   // 팝업창 상태 관리
   const [isPopupOpen, setIsPopupOpen] = useState(false)
@@ -27,6 +33,8 @@ const SingupForm = () => {
   const closePostCode = () => {
       setIsPopupOpen(false)
   }
+
+  console.log(finalAddress);
 
   let navigate = useNavigate();
   const onChange = (event) => {
@@ -44,13 +52,9 @@ const SingupForm = () => {
     } else if (name === "phone") {
       const onlyNumber = value.replace(/[^0-9]/g, '')
       setUserPhone(onlyNumber);
-    } else if (name == "address"){
-      const temp = "서울시 양천구";
-      setUserAddress(temp);
+    } else if (name == "secondAddress"){
+      setUserSecondAddress(value);
     }
-    // else if (name === "sex") {
-    //   setSex(value);
-    // }
   };
 
   let userInfo = {
@@ -59,19 +63,19 @@ const SingupForm = () => {
     'id':id,
     'pw':pw,
     'phone':phone,
-    'address':address,
+    'address':finalAddress,
   };
 
   const register = (event) => {
     event.preventDefault();
     JSON.stringify(userInfo);
-    axios.post('http://localhost:8000/signup', {
+    axios.post(API_KEY, {
     'name': name,
     'email': email,
     'id':id,
     'pw':pw,
     'phone':phone,
-    'address':address,
+    'address':finalAddress,
   })
   .then(response => {
     console.log(response);
@@ -209,18 +213,15 @@ const SingupForm = () => {
                     <input className={styles.Input}
                     onChange={onChange}
                     value={email}
-                    name="addressdetail"
+                    name="email"
                     type="text"
                     placeholder="예: marketkurly@kurly.com">
                     </input>
                   </div>
                 </div>
               </div>
-
               <div className={styles.repeatBox}>
-                <button className={styles.repeatButton}>
-                  <span>중복확인</span>
-                </button>
+                
               </div>
             </div>
 
@@ -261,27 +262,41 @@ const SingupForm = () => {
               <div className={styles.Inputflex}>
                 <div className={styles.Inputpadding}>
                   <div className={styles.Inputposition}>
-                    <button className={styles.addressButton}
-                    onChange={onChange}
-                    onClick={openPostCode}
-                    value={address}
-                    name="address"
-                    type="button">
-                      <span className={styles.addressSpan}>
-                        <img src="https://res.kurly.com/pc/service/cart/2007/ico_search.svg" className={styles.addressImg}></img>
-                        주소 검색
-                      </span>
-                    </button>
-                    <div id='popupDom'>
-                        {isPopupOpen && (
-                            <PopupDom>
-                                <PopupPostCode onClose={closePostCode} address={address}/>
-                            </PopupDom>
-                        )}
-                    </div>
-                    <span className={styles.addressNotice}>
-                      배송지에 따라 상품 정보가 달라질 수 있습니다.
-                    </span>
+                    <div>
+                      <div>{firstAddress==null ? <button className={styles.addressButton}
+                        onClick={openPostCode}
+                        type="button">
+                          <span className={styles.addressSpan}>
+                            <img src="https://res.kurly.com/pc/service/cart/2007/ico_search.svg" className={styles.addressImg}></img>
+                            주소 검색
+                          </span>
+                          <div id='popupDom'>
+                            
+                            {isPopupOpen && (
+                                <PopupDom>
+                                    <PopupPostCode onClose={closePostCode}/>
+                                </PopupDom>
+                            )}
+                          </div>
+                        </button> : <div className={styles.Inputflex}>
+                                      <div className={styles.Inputpadding}>
+                                        <div className={styles.Inputposition}>
+                                          <input className={styles.Input}
+                                          type="text" 
+                                          placeholder={firstAddress} 
+                                          readOnly></input>
+                                        </div>
+                                      </div>
+                                    </div>}</div>
+                                  
+                        {/* <div id='popupDom'>
+                            {isPopupOpen && (
+                                <PopupDom>
+                                    <PopupPostCode onClose={closePostCode}/>
+                                </PopupDom>
+                            )}
+                        </div> */}
+                      </div>
                   </div>
                 </div>
               </div>
@@ -297,17 +312,21 @@ const SingupForm = () => {
                  
                 </label>
               </div>
-              <div className={styles.Inputflex}>
-                <div className={styles.Inputpadding}>
-                  <div className={styles.Inputposition}>
-                    <input className={styles.Input}
-                    type="text">
-                      
-                    </input>
+              
+                <div className={styles.Inputflex}>
+                  <div className={styles.Inputpadding}>
+                    <div className={styles.Inputposition}>
+                      <input className={styles.Input} placeholder="나머지 주소를 입력해주세요"
+                      onChange={onChange} 
+                      value = {secondAddress} 
+                      name="secondAddress" 
+                      type="text">
+                        
+                      </input>
+                    </div>
                   </div>
                 </div>
-              </div>
-
+              
               <div className={styles.repeatBox}>
               
               </div>
