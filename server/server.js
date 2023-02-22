@@ -44,6 +44,7 @@ app.post('/signup',async(req,res)=>{
     }
     
 })
+// ID 중복체크
 app.post('/confirmId',async(req,res)=>{
     const {id} = req.body;
     const exist = await user.confirmId(id);
