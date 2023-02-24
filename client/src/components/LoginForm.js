@@ -3,8 +3,8 @@ import LoginStyles from "../css/Login.module.css";
 import { useNavigate } from "react-router-dom";
 
 const User = {
-  id: "abcd",
-  pw: "1234",
+  id: "",
+  pw: "",
 };
 
 const LoginForm = () => {
