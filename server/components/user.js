@@ -31,3 +31,11 @@ exports.signup = async(id,pw,name,email,phone,address) =>{
     }
 
 }
+exports.getUsers =async ()=>{
+    let jsonArray = new Array();
+    const Snapshot = await getDocs(collection(db,'users'));
+    Snapshot.forEach((doc) => {
+        jsonArray.push(doc.data())
+    })
+    return jsonArray;
+}
