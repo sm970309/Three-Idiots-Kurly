@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import PopupDom from "../components/PopupDom";
 import PopupPostCode from "../components/PopupPostCode";
 import styles from "../css/Signup.module.css";
+const API_KEY = "http://localhost:8000/signup";
 
 const SingupForm = () => {
   const [id, setUserId] = useState("");
@@ -69,41 +70,43 @@ const SingupForm = () => {
   const register = (event) => {
     event.preventDefault();
     JSON.stringify(userInfo);
-    axios.post(API_KEY, {
-    'name': name,
-    'email': email,
-    'id':id,
-    'pw':pw,
-    'phone':phone,
-    'address':finalAddress,
-  })
-  .then(response => {
-    console.log("Test");
-    console.log(response.data.result);
-  })
-  .catch(error => {
-    // Handle error.
-    console.log('An error occurred:', error.response);
-  });
+    axios
+      .post(API_KEY, {
+        name: name,
+        email: email,
+        id: id,
+        pw: pw,
+        phone: phone,
+        address: finalAddress,
+      })
+      .then((response) => {
+        console.log("Test");
+        console.log(response.data.result);
+      })
+      .catch((error) => {
+        // Handle error.
+        console.log("An error occurred:", error.response);
+      });
   };
 
   const confirmID = (event) => {
     event.preventDefault();
-    axios.post(confirmID_url, {
-      'id':id
-    })
-    .then(response => {
-      const { confirmId } = response.data.exist;
-      if(confirmId == "true"){
-        alert("중복된 ID가 존재합니다.");
-      }
-      console.log(response.data.exist);
-      console.log("성공");
-    })
-    .catch(error => {
-      console.log(error);
-      console.log("실패");
-    });
+    axios
+      .post(confirmID_url, {
+        id: id,
+      })
+      .then((response) => {
+        const { confirmId } = response.data.exist;
+        if (confirmId == "true") {
+          alert("중복된 ID가 존재합니다.");
+        }
+        console.log(response.data.exist);
+        console.log("성공");
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log("실패");
+      });
   };
 
   return (
@@ -360,7 +363,7 @@ const SingupForm = () => {
           </div>
 
           <div className={styles.signupDiv}>
-              <button onClick={register}>가입하기</button>
+            <button onClick={register}>가입하기</button>
           </div>
         </div>
       </form>
