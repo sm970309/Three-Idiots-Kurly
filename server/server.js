@@ -16,7 +16,7 @@ app.use(express.urlencoded({
 
 // 서버와 클라이언트 연동 -> 서버에 접속할때는 8000 PORT로 접근
 
-app.use(cors())
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }))
 app.use(express.static(path.join(__dirname,'..','client/build')))
 
 // 상품 리스트 반환 API
