@@ -16,6 +16,8 @@
     "fetch": "^1.1.0",
     "firebase": "^9.16.0",
     "fs": "^0.0.1-security",
-    "nodemon": "^2.0.20"
+    "jsonwebtoken": "^9.0.0",
+    "nodemon": "^2.0.20",
+    "rand-token": "^1.0.1"
   }
 }
