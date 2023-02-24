@@ -6,7 +6,7 @@ import SwiperItems from "./SwiperItems";
 
 const ItemList = () => {
   let items = JSON.parse(localStorage.getItem("items"));
-  items = items.slice(0, 20);
+  items = items.slice(120, 150);
 
   // return <PaintItem items={items} />;
   return <SwiperItems items={items} />;
