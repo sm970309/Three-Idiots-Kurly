@@ -1,4 +1,4 @@
-const { fb } = require("./fb");
+const { fb } = require("../modules/fb");
 const { collection, addDoc, getFirestore, getDocs } = require('firebase/firestore');
 const db = getFirestore(fb);
 
