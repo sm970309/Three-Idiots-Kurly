@@ -39,7 +39,7 @@ app.post('/signup',async(req,res)=>{
     if (exist==true){
         res.json({'result':'fail'})
     }else{
-        const result = user.signup(id,pw,name,email,phone,address)
+        const result = await user.signup(id,pw,name,email,phone,address)
         res.json({'result':result})
     }
     
@@ -49,6 +49,10 @@ app.post('/confirmId',async(req,res)=>{
     const {id} = req.body;
     const exist = await user.confirmId(id);
     res.json({"exist":exist})
+})
+// 현재 유저 리스트
+app.get('/users',async(req,res)=>{
+    res.send(await user.getUsers())
 })
 
 app.listen(PORT,() =>{
