@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Three-Idiots-Kurly/static/css/main.70de3aa8.css",
+    "main.js": "/Three-Idiots-Kurly/static/js/main.acf53954.js",
+    "static/media/세얼간이_logo.jpg": "/Three-Idiots-Kurly/static/media/세얼간이_logo.4d6b6ae116155d381ec9.jpg",
+    "index.html": "/Three-Idiots-Kurly/index.html",
+    "main.70de3aa8.css.map": "/Three-Idiots-Kurly/static/css/main.70de3aa8.css.map",
+    "main.acf53954.js.map": "/Three-Idiots-Kurly/static/js/main.acf53954.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.70de3aa8.css",
+    "static/js/main.acf53954.js"
+  ]
+}
