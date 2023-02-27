@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "homepage": "https://sm970309.github.io/Three-Idiots-Kurly/",
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -19,5 +20,8 @@
     "jsonwebtoken": "^9.0.0",
     "nodemon": "^2.0.20",
     "rand-token": "^1.0.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
