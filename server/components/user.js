@@ -41,13 +41,17 @@ exports.getUsers =async ()=>{
     return jsonArray;
 }
 exports.signin = async(id,pw) =>{
-    let user
+    let user,exist;
     const q = query(collection(db,'users'),where("id","==",id))
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
         user = doc.data();
+        exist = doc.exists();
     })
-    if (await bcrypt.compare(pw,user.pw)==true){
+    if (user===undefined){
+        return {'status':'fail'}
+    }
+    else if (await bcrypt.compare(pw,user.pw)==true){
         const jwtToken = await jwt.sign(user);
         return {"token":jwtToken.token,"status":'success'}
     }else{
