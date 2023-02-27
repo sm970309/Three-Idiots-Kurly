@@ -52,7 +52,6 @@ app.post('/confirmId',async(req,res)=>{
 })
 // 현재 유저 리스트
 app.get('/users',async(req,res)=>{
-    await user.signin('admin')
     res.send(await user.getUsers())
 })
 app.post('/signin',async(req,res)=>{
