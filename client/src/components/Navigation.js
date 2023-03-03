@@ -4,6 +4,39 @@ import { useState } from "react";
 import styles from "../css/Navigation.module.css";
 import THREEIDIOTS_LOGO from "../img/세얼간이_logo.jpg";
 import CategoryForm from "./CategoryForm";
+
+const CATEGORIES = [
+  {
+    id: 1,
+    name: "채소",
+    subcategories: [
+      { subCategoryId: 1, name: "친환경" },
+      { subCategoryId: 2, name: "고구마·감자·당근" },
+      { subCategoryId: 3, name: "시금치·쌈채소·나물" },
+    ],
+  },
+  {
+    id: 2,
+    name: "과일·견과·쌀",
+    subcategories: [
+      { subCategoryId: 1, name: "친환경" },
+      { subCategoryId: 2, name: "제철과일" },
+      { subCategoryId: 3, name: "국산과일" },
+    ],
+  },
+  {
+    id: 3,
+    name: "수산·해산·건어물",
+    subcategories: [
+      { subCategoryId: 1, name: "제철수산" },
+      { subCategoryId: 2, name: "생선류" },
+      { subCategoryId: 3, name: "굴비·반건류" },
+    ],
+  },
+];
+
+let subcategorieArray = [];
+
 const Navigation = () => {
   let navigate = useNavigate();
   const onClick = (event) => {
@@ -16,7 +49,9 @@ const Navigation = () => {
     console.log(keyword);
   };
 
-  const [categoryToggle, setCategoryToggle] = useState(false);
+  const [mainCategoryToggle, setMainCategoryToggle] = useState(false);
+  const [subCategoryToggle, setSubCategoryToggle] = useState(false);
+  const [subCategoryName, setSubCategoryName] = useState("");
 
   return (
     <div>
@@ -98,18 +133,56 @@ const Navigation = () => {
           <div>
             <div
               className={styles.lowCategoryDiv}
-              onMouseEnter={() => setCategoryToggle(true)}
-              onMouseLeave={() => setCategoryToggle(false)}
+              onMouseEnter={() => setMainCategoryToggle(true)}
+              onMouseLeave={() => setMainCategoryToggle(false)}
             >
               <span className={styles.CategoryBar}></span>
               <span>카테고리</span>
-              {categoryToggle ? (
-                <div className={styles.clientCenter}>
-                  <lu>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                  </lu>
+              {mainCategoryToggle ? (
+                <div className={styles.categoryFormDiv}>
+                  <div className={styles.mainCategoryFormDiv}>
+                    {CATEGORIES &&
+                      CATEGORIES.map((item) => (
+                        <div>
+                          <div
+                            className={styles.mainCategoryDiv}
+                            onMouseEnter={() => {
+                              setSubCategoryToggle(true);
+                              setSubCategoryName(item.name);
+                              subcategorieArray = item.subcategories;
+                            }}
+                            onMouseLeave={() => {
+                              setSubCategoryToggle(false);
+                            }}
+                          >
+                            {item.name}
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                  {subCategoryToggle ? (
+                    <div
+                      className={styles.subCategoryFormDiv}
+                      onMouseEnter={() => {
+                        setSubCategoryToggle(true);
+                      }}
+                      onMouseLeave={() => {
+                        setSubCategoryToggle(false);
+                      }}
+                    >
+                      <div>
+                        {subcategorieArray.map((item) => (
+                          <div>
+                            <div className={styles.subCategoryDiv}>
+                              {item.name}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <></>
+                  )}
                 </div>
               ) : (
                 <></>
