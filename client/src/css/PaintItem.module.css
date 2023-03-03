@@ -8,11 +8,15 @@ button {
   background-color: transparent;
   border: none;
 }
+.ItemImage:hover {
+  transform: scale(1.1);
+}
 .PaintItemA {
   display: block;
   color: rgb(51, 51, 51);
   cursor: pointer;
   width: 249px;
+  overflow: hidden;
 }
 .ImageDiv {
   height: 320px;

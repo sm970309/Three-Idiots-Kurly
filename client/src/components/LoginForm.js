@@ -25,23 +25,30 @@ const LoginForm = () => {
 
   const login = (event) => {
     event.preventDefault();
-    axios
-      .post(API_URL, {
-        id: id,
-        pw: pw,
-      })
-      .then((response) => {
-        const { status } = response.data.result;
-        if (status === "success") {
-          navigate("/" + "market");
-        } else if (status === "fail") {
-          alert("아이디 또는 비밀번호가 틀렸습니다.");
-        }
-      })
-      .catch((error) => {
-        alert("서버 연동 오류");
-        console.log(error);
-      });
+    if (id === null) {
+      alert("아이디를 입력해주세요.");
+    } else if (pw === null) {
+      alert("비밀번호를 입력해주세요");
+    } else {
+      axios
+        .post(API_URL, {
+          id: id,
+          pw: pw,
+        })
+        .then((response) => {
+          const { status, token } = response.data.result;
+          console.log(token);
+          if (status === "success") {
+            navigate("/" + "market");
+          } else if (status === "fail") {
+            alert("아이디 또는 비밀번호가 틀렸습니다.");
+          }
+        })
+        .catch((error) => {
+          alert("서버 연동 오류");
+          console.log(error);
+        });
+    }
   };
 
   return (

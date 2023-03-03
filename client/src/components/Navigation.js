@@ -3,7 +3,7 @@ import SearchBar from "./SearchBar";
 import { useState } from "react";
 import styles from "../css/Navigation.module.css";
 import THREEIDIOTS_LOGO from "../img/세얼간이_logo.jpg";
-
+import CategoryForm from "./CategoryForm";
 const Navigation = () => {
   let navigate = useNavigate();
   const onClick = (event) => {
@@ -16,41 +16,39 @@ const Navigation = () => {
     console.log(keyword);
   };
 
+  const [categoryToggle, setCategoryToggle] = useState(false);
+
   return (
     <div>
       <div className={styles.topBar}>
         <div className={styles.topUserBar}>
-          <a
-            className={styles.topUserOption}
-            onClick={onClick}
-            id="member/signup"
-          >
+          <a className={styles.signupFont} onClick={onClick} id="member/signup">
             회원가입
           </a>
-          <div className={styles.topBarLine}></div>
-          <a
-            className={styles.topUserOption}
-            onClick={onClick}
-            id="member/login"
-          >
-            로그인
-          </a>
+
           <div className={styles.topBarLine}></div>
 
-          <div className={styles.clientcenter}>
+          <a className={styles.topBarAFont} onClick={onClick} id="member/login">
+            로그인
+          </a>
+
+          <div className={styles.topBarLine}></div>
+
+          <div className={styles.clientCenter}>
             <a
-              className={styles.topUserOption}
+              className={styles.topBarAFont}
               onClick={onClick}
               id="member/signup"
             >
               고객센터
               <span className={styles.downArrow}></span>
             </a>
-            <div className={styles.clientcenterBox}>
-              <div className={styles.clientcenterFont}>공지사항</div>
-              <div className={styles.clientcenterFont}>자주하는 질문</div>
+
+            <div className={styles.clientCenterBox}>
+              <div className={styles.clientCenterFont}>공지사항</div>
+              <div className={styles.clientCenterFont}>자주하는 질문</div>
               <div className={styles.clientcenterFont}>1:1 문의</div>
-              <div className={styles.clientcenterFont}>대량주문 문의</div>
+              <div className={styles.clientCenterFont}>대량주문 문의</div>
             </div>
           </div>
         </div>
@@ -66,14 +64,14 @@ const Navigation = () => {
             <button
               onClick={onClick}
               id="market"
-              className={styles.midBarButton}
+              className={styles.midBarMarketBtn}
             >
               마켓컬리
             </button>
             <button
               onClick={onClick}
               id="beauty"
-              className={styles.midBarButton}
+              className={styles.midBarBeautyBtn}
             >
               뷰티컬리
             </button>
@@ -98,9 +96,24 @@ const Navigation = () => {
       <div className={styles.lowDiv}>
         <div className={styles.lowBar}>
           <div>
-            <div className={styles.lowCategoryDiv}>
+            <div
+              className={styles.lowCategoryDiv}
+              onMouseEnter={() => setCategoryToggle(true)}
+              onMouseLeave={() => setCategoryToggle(false)}
+            >
               <span className={styles.CategoryBar}></span>
               <span>카테고리</span>
+              {categoryToggle ? (
+                <div className={styles.clientCenter}>
+                  <lu>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                  </lu>
+                </div>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
           <ul className={styles.lowUl}>
