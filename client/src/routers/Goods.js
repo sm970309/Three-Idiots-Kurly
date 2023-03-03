@@ -1,12 +1,13 @@
 import Navigaion from "../components/Navigation";
 import { useParams } from "react-router-dom";
+import ItemDetailForm from "../components/ItemDetailForm";
 const Goods = () => {
-  const { id } = useParams();
+  const { no } = useParams();
 
   return (
     <div>
       <Navigaion />
-      <h1>no:{id} 상세페이지</h1>
+      <ItemDetailForm no={no} />
     </div>
   );
 };

@@ -2,7 +2,11 @@
   box-sizing: border-box;
   margin: 0;
 }
-
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
 .topBar {
   position: relative;
   width: 1050px;
@@ -27,9 +31,14 @@
   align-items: center;
   font-size: 12px;
 }
-.topUserOption {
+.signupFont {
   display: block;
   color: rgb(95, 0, 128);
+  cursor: pointer;
+  vertical-align: middle;
+}
+.topBarAfont {
+  display: block;
   cursor: pointer;
   vertical-align: middle;
 }
@@ -54,12 +63,15 @@
   margin-bottom: 1px;
 }
 
-.clientcenter {
+.clientCenter {
   line-height: 35px;
   position: relative;
 }
+.clientCenter:hover > .clientCenterBox {
+  display: block;
+}
 
-.clientcenterBox {
+.clientCenterBox {
   display: none;
   position: absolute;
   right: 0px;
@@ -70,18 +82,7 @@
   background-color: rgb(255, 255, 255);
 }
 
-.clientcenterBox:hover {
-  display: block;
-  position: absolute;
-  right: 0px;
-  top: 34px;
-  width: 120px;
-  padding: 3px 9px;
-  border: 1px solid rgb(221, 221, 221);
-  background-color: rgb(255, 255, 255);
-}
-
-.clientcenterFont {
+.clientCenterFont {
   display: block;
   height: 24px;
   line-height: 24px;
@@ -103,12 +104,25 @@
   flex: 0 0 82px;
 }
 
-.midBarButton:hover {
+.midBarMarketBtn {
+  flex-shrink: 0;
+  margin-left: 20px;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  color: rgb(95, 0, 128);
+  cursor: pointer;
+  overflow: visible;
+  background-color: transparent;
+  border: none;
+}
+
+.midBarBeautyBtn:hover {
   font-weight: 500;
   color: rgb(95, 0, 128);
 }
-
-.midBarButton {
+.midBarBeautyBtn {
   flex-shrink: 0;
   margin-left: 20px;
   font-size: 18px;

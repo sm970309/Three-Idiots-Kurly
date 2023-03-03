@@ -15,7 +15,7 @@ function AppRouter() {
         <Route exact path="/beauty" element={<Beatuy />} />
         <Route exact path="/member/signup" element={<SignUp />} />
         <Route exact path="/member/login" element={<Login />} />
-        <Route exact path="/goods/:id" element={<Goods />} />
+        <Route exact path="/goods/:no" element={<Goods />} />
       </Routes>
     </BrowserRouter>
   );
