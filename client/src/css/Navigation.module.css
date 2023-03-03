@@ -239,7 +239,7 @@ a {
   height: fit-content;
   font-size: 16px;
   font-weight: 500;
-  color: rgb(51, 51, 51);
+  color: rgb(51, 5v1, 51);
   cursor: pointer;
 }
 
@@ -256,4 +256,48 @@ a {
   font-size: 13px;
   line-height: 16px;
   letter-spacing: -0.32px;
+}
+
+.categoryFormDiv {
+  max-height: calc(95vh -55px);
+  min-height: 200px;
+  position: absolute;
+  display: flex;
+  top: 46px;
+  padding-top: 10px;
+}
+.mainCategoryFormDiv {
+  width: 250px;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid gainsboro;
+  top: 200px;
+}
+
+.mainCategoryDiv {
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+}
+.mainCategoryDiv:hover {
+  background-color: rgb(240, 234, 234);
+  color: rgb(95, 0, 128);
+}
+.subCategoryFormDiv {
+  width: 250px;
+  flex-direction: column;
+  background-color: rgb(241, 240, 240);
+  border: 1px solid gainsboro;
+  top: 200px;
+}
+.subCategoryDiv {
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+}
+.subCategoryDiv:hover {
+  color: rgb(95, 0, 128);
+  text-decoration: underline;
 }
