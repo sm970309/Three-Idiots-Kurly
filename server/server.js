@@ -21,7 +21,7 @@ app.use(
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.static(path.join(__dirname, "..", "client/build")));
 
-app.get('/logintest',checkToken,(req,res)=>{
+app.post('/logintest',checkToken,(req,res)=>{
   res.json({'id':req.id})
 })
 
