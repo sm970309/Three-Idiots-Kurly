@@ -3,7 +3,6 @@ import SearchBar from "./SearchBar";
 import { useState } from "react";
 import styles from "../css/Navigation.module.css";
 import THREEIDIOTS_LOGO from "../img/세얼간이_logo.jpg";
-import CategoryForm from "./CategoryForm";
 
 const CATEGORIES = [
   {

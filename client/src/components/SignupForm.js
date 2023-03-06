@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import PopupDom from "../components/PopupDom";
 import PopupPostCode from "../components/PopupPostCode";
 import styles from "../css/Signup.module.css";
+
 const API_KEY = "http://localhost:8000/signup";
 const confirmID_url = "http://localhost:8000/confirmId";
 

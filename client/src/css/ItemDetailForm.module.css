@@ -1,4 +1,12 @@
 .formDiv {
-  width: 100%;
   position: relative;
+  width: 1050px;
+  margin: 0px auto;
+  padding-top: 30px;
+}
+
+.formMain {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
 }

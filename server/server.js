@@ -21,9 +21,9 @@ app.use(
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.static(path.join(__dirname, "..", "client/build")));
 
-app.post('/logintest',checkToken,(req,res)=>{
-  res.json({'id':req.id})
-})
+app.post("/logintest", checkToken, (req, res) => {
+  res.json({ id: req.id });
+});
 
 // 상품 리스트 반환 API
 app.get("/items", async (req, res) => {
