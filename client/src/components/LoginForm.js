@@ -40,6 +40,17 @@ const LoginForm = () => {
           console.log(token);
           if (status === "success") {
             navigate("/" + "market");
+            // axios
+            //   .post(
+            //     "http://localhost:8000/logintest",
+
+            //     {
+            //       headers: { token: token },
+            //     }
+            //   )
+            //   .then((res) => {
+            //     console.log(res);
+            //   });
           } else if (status === "fail") {
             alert("아이디 또는 비밀번호가 틀렸습니다.");
           }
