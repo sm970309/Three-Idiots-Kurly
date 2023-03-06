@@ -239,7 +239,7 @@ a {
   height: fit-content;
   font-size: 16px;
   font-weight: 500;
-  color: rgb(51, 51, 51);
+  color: rgb(51, 5v1, 51);
   cursor: pointer;
 }
 
@@ -257,26 +257,47 @@ a {
   line-height: 16px;
   letter-spacing: -0.32px;
 }
-.searchBarbutton{
-  position: relative;
-  cursor: pointer;
-    width: 30px;
-    height: 30px;
-    margin: 10px;
-    bottom: 3px;
-    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iMzYiIHZpZXdCb3g9IjAgMCAzNiAzNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGgzNnYzNkgweiIvPgogICAgICAgIDxnIHN0cm9rZT0iIzVGMDA4MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2Utd2lkdGg9IjEuNyI+CiAgICAgICAgICAgIDxwYXRoIGQ9Im0yNi4wODEgMjYuMDgxLTQuMTItNC4xMk0xNi40NjcgMjMuMzM0YTYuODY3IDYuODY3IDAgMSAwIDAtMTMuNzM0IDYuODY3IDYuODY3IDAgMCAwIDAgMTMuNzM0eiIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg==) 0px 0px no-repeat;
-}
-.searchBarXbutton{
+
+.categoryFormDiv {
+  max-height: calc(95vh -55px);
+  min-height: 200px;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  right: 47px;
-  margin-left: 20px;
-  background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGNpcmNsZSBmaWxsPSIjOTk5IiBvcGFjaXR5PSIuNSIgY3g9IjgiIGN5PSI4IiByPSI4Ii8+CiAgICAgICAgPGcgc3Ryb2tlPSIjRkZGIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS13aWR0aD0iMS41Ij4KICAgICAgICAgICAgPHBhdGggZD0ibTEwLjg5NyAxMC43ODYtNS43Ny01Ljc2OU01LjEyMiAxMC43ODVsNS43NzUtNS43NzUiLz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPgo=) 0% 0% / 16px 16px no-repeat transparent;
-  border-width: initial;
-  border-style: none;
-  border-color: initial;
-  border-image: initial;
+  display: flex;
+  top: 46px;
+  padding-top: 10px;
+}
+.mainCategoryFormDiv {
+  width: 250px;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid gainsboro;
+  top: 200px;
+}
+
+.mainCategoryDiv {
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+}
+.mainCategoryDiv:hover {
+  background-color: rgb(240, 234, 234);
+  color: rgb(95, 0, 128);
+}
+.subCategoryFormDiv {
+  width: 250px;
+  flex-direction: column;
+  background-color: rgb(241, 240, 240);
+  border: 1px solid gainsboro;
+  top: 200px;
+}
+.subCategoryDiv {
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+}
+.subCategoryDiv:hover {
+  color: rgb(95, 0, 128);
+  text-decoration: underline;
 }
