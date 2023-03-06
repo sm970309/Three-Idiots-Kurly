@@ -8,7 +8,7 @@ const TOKEN_INVALID = -2;
 module.exports = {
     sign: async (user) => {
         const payload = {
-            idx: user.id,
+            id: user.id,
         };
         const result = {
             //sign메소드를 통해 access token 발급!

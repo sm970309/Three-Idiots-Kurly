@@ -6,6 +6,7 @@ const app = express();
 
 const item = require("./components/item");
 const user = require("./components/user");
+const { checkToken } = require("./middelwares/auth");
 
 app.use(express.json());
 app.use(
@@ -17,9 +18,12 @@ app.use(
 // app.use(bodyParser.json())
 
 // 서버와 클라이언트 연동 -> 서버에 접속할때는 8000 PORT로 접근
-
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.static(path.join(__dirname, "..", "client/build")));
+
+app.get('/logintest',checkToken,(req,res)=>{
+  res.json({'id':req.id})
+})
 
 // 상품 리스트 반환 API
 app.get("/items", async (req, res) => {
