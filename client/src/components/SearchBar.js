@@ -1,19 +1,34 @@
 import { useState } from "react";
+import SwiperItems from "./SwiperItems";
+import itemList from "./ItemList";
 
 function SearchBar() {
-  const [keyword, setKeyWord] = useState("");
-  const onChange = (event) => {
-    setKeyWord(event.target.value);
-    console.log(keyword);
-  };
+  let items = JSON.parse(localStorage.getItem("items"));
+
+  const [search, setSearch] = useState("");
+
+  const onChange = (e) => {
+    setSearch(e.target.value)
+  }
+
+  const filterTitle = items.filter((p) => {
+    return p.title.replace(" ","").toLocaleLowerCase().includes(search.toLocaleLowerCase().replace(" ",""))
+})
+
+// console.log(filterTitle);
+
   return (
-    <input
-      type="text"
-      id="keyword"
-      value={keyword}
-      placeholder="검색을 입력해주세요"
-      onChange={onChange}
-    ></input>
+    <div>
+      <input
+        type="text"
+        id="search"
+        value={search}
+        placeholder="검색을 입력해주세요"
+        onChange={onChange}/>
+        {filterTitle.map((items) => {
+          return <itemList items={items} />
+        })}
+    </div>
   );
 }
 
