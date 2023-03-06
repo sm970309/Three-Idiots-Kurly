@@ -24,9 +24,16 @@ const ItemDetailForm = ({ no }) => {
   return (
     <div className={styles.formDiv}>
       <main id="product-atf" className={styles.formMain}>
-        <div className={styles.imgDiv}>
-          <img src={item.img} />
+        <div>
+          <img className={styles.imgDiv} src={item.img} />
         </div>
+        <section className={styles.formSection}>
+          <div className={styles.divFont}>샛별배송</div>
+          <div className={styles.itemNameDiv}>
+            <h1 className={styles.itemNameH1}>{item.name}</h1>
+            <button className={styles.shareBtn}></button>
+          </div>
+        </section>
       </main>
     </div>
   );
