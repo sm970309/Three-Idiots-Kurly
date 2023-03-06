@@ -39,14 +39,16 @@ let subcategorieArray = [];
 
 const Navigation = () => {
   let navigate = useNavigate();
+
   const onClick = (event) => {
     const changePage = event.target.id;
     navigate("/" + changePage);
   };
+
   const [keyword, setKeyWord] = useState("");
-  const onChange = (event) => {
-    setKeyWord(event.target.value);
-    console.log(keyword);
+  
+  const onSubmit = async () => {
+    window.location.href = "/search/" + keyword;
   };
 
   const [mainCategoryToggle, setMainCategoryToggle] = useState(false);
@@ -119,8 +121,19 @@ const Navigation = () => {
                 id="keyword"
                 value={keyword}
                 placeholder="검색을 입력해주세요"
-                onChange={onChange}
-              ></input>
+                onChange={(e) => {
+                  setKeyWord(e.target.value);
+                  console.log(keyword);
+                }}></input>
+              <button
+                className={styles.searchBarXbutton}></button>
+              <button
+                className={styles.searchBarbutton}
+                id="submit"
+                type="button"
+                onClick={() =>{
+                  onSubmit();
+                }}></button>
             </div>
           </div>
           <div>

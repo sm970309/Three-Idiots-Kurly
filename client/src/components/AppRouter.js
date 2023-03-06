@@ -5,6 +5,7 @@ import Home from "../routers/Home";
 import SignUp from "../routers/SignUp";
 import Login from "../routers/Login";
 import Goods from "../routers/Goods";
+import Search from "../routers/Search";
 
 function AppRouter() {
   return (
@@ -16,6 +17,7 @@ function AppRouter() {
         <Route exact path="/member/signup" element={<SignUp />} />
         <Route exact path="/member/login" element={<Login />} />
         <Route exact path="/goods/:no" element={<Goods />} />
+        <Route exact path="/search/:sword" element={<Search />} />
       </Routes>
     </BrowserRouter>
   );

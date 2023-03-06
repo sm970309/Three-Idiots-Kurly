@@ -5,22 +5,18 @@ import PopupDom from "../components/PopupDom";
 import PopupPostCode from "../components/PopupPostCode";
 import styles from "../css/Signup.module.css";
 const API_KEY = "http://localhost:8000/signup";
+const confirmID_url = "http://localhost:8000/confirmId";
 
 const SingupForm = () => {
   const [id, setUserId] = useState("");
-  const confirmid = useState(false);
   const [pw, setPw] = useState("");
   const [confirmPw, setConfirmPw] = useState("");
   const [name, setUserName] = useState("");
   const [email, setUserEmail] = useState("");
   const [phone, setUserPhone] = useState("");
-
-  const API_KEY = "http://localhost:8000/signup";
-  const confirmID_url = "http://localhost:8000/confirmId";
+  const [secondAddress, setUserSecondAddress] = useState("");
 
   let firstAddress = JSON.parse(localStorage.getItem("address"));
-
-  const [secondAddress, setUserSecondAddress] = useState("");
 
   let finalAddress = firstAddress + " " + secondAddress;
 
@@ -53,7 +49,7 @@ const SingupForm = () => {
     } else if (name === "phone") {
       const onlyNumber = value.replace(/[^0-9]/g, "");
       setUserPhone(onlyNumber);
-    } else if (name == "secondAddress") {
+    } else if (name === "secondAddress") {
       setUserSecondAddress(value);
     }
   };
@@ -70,7 +66,16 @@ const SingupForm = () => {
   const register = (event) => {
     event.preventDefault();
     JSON.stringify(userInfo);
-    axios
+
+    if(id === "" || pw === "" || confirmPw === "" || name === "" || email === "" || phone === "" || firstAddress === "" ){
+      alert("필수입력사항을 모두 입력해주세요");
+      console.log("회원가입 사항 입력 에러");
+    }else if(confirmPw != pw){
+      alert("비밀번호란과 비밀번호확인란에 입력된 정보가 서로 다릅니다");
+    }else if(secondAddress === ""){
+      alert("나머지 주소를 입력해주세요");
+    }else{
+      axios
       .post(API_KEY, {
         name: name,
         email: email,
@@ -80,33 +85,37 @@ const SingupForm = () => {
         address: finalAddress,
       })
       .then((response) => {
-        console.log("Test");
         console.log(response.data.result);
       })
       .catch((error) => {
         // Handle error.
         console.log("An error occurred:", error.response);
       });
+    }
   };
 
   const confirmID = (event) => {
     event.preventDefault();
-    axios
-      .post(confirmID_url, {
-        id: id,
-      })
-      .then((response) => {
-        const { confirmId } = response.data.exist;
-        if (confirmId == "true") {
-          alert("중복된 ID가 존재합니다.");
-        }
-        console.log(response.data.exist);
-        console.log("성공");
-      })
-      .catch((error) => {
-        console.log(error);
-        console.log("실패");
-      });
+    axios.post(confirmID_url, {
+      'id':id
+    })
+    .then(response => {
+  
+      if(response.data.exist === true){
+        alert("중복된 ID가 존재합니다.");
+        return false;
+      }
+      else{
+        alert("사용가능한 ID입니다.");
+        return true;
+      }
+      console.log(response.data.exist);
+    })
+    .catch(error => {
+      console.log(error);
+      console.log("실패");
+    });
+
   };
 
   return (
