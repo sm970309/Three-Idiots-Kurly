@@ -1,0 +1,190 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.OutSectionDiv{
+    width: 100%;
+    padding-bottom: 80px;
+    background-color: rgb(255, 255, 255);
+}
+.InnerSectionDiv{
+    width: 1050px;
+    margin: 0px auto;
+    align-content: center;
+}
+.MainSectionDiv{
+    width: 1050px;
+    margin: 0px auto;
+}
+.SearchTitle{
+    margin-top: 50px;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 35px;
+    letter-spacing: -0.5px;
+    text-align: center;
+}
+.SearchSectionDiv{
+    position: relative;
+    display: flex;
+    width: 1050px;
+    margin-top: 50px;
+    margin-bottom: 75px;
+}
+.LeftSectionDiv{
+    position: sticky;
+    width: 220px;
+    flex-shrink: 0;
+    height: 100%;
+    max-height: calc(100vh - 120px);
+    top: 80px;
+    margin-right: 47px;
+    border-bottom: 1px solid rgb(238, 238, 238);
+    overflow: hidden scroll;
+}
+.RightSectionDiv{
+    width: 100%;
+}
+.SearchFilterDiv{
+    position: sticky;
+    top: 0px;
+    display: flex;
+    z-index: 20;
+    background-color: rgb(255, 255, 255);
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(238, 238, 238);
+    line-height: 20px;
+}
+.SearchCategoryDiv{
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+.FilterFont{
+    font-weight: 500;
+    font-size: 15px;
+    color: rgb(51, 51, 51);
+}
+.SearchCategoryButton{
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    height: 52px;
+    overflow: hidden;
+}
+.SearchCategoryButtonDiv{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    color: rgb(51, 51, 51);
+}
+.Searchul{
+    transition: all 250ms cubic-bezier(0.83, 0, 0.17, 1) 0s;
+    height: auto;
+    opacity: 0;
+    overflow: hidden;
+}
+.Searchli{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-bottom: 18px;
+}
+.Searcha{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.SearchaButton{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-right: 8px;
+}
+.SearchaSpan{
+    margin-right: 4px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: rgb(51, 51, 51);
+    display: -webkit-box;
+    overflow: hidden;
+    word-break: break-all;
+    white-space: normal;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.RightSectionUpDiv{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    line-height: 20px;
+}
+.RightSectionMiddleDiv{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 249px);
+    gap: 31px 18px;
+    width: 100%;
+}
+.RightSectionDownDiv{
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-top: 36px;
+}
+.SearchTotalFont{
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(51, 51, 51);
+}
+.RightSectionSearchCategoryul{
+    position: relative;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.RightSectionSearchCategoryli{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    margin-left: 8px;
+    font-size: 14px;
+    color: rgb(153, 153, 153);
+}
+.RightSectionSearchCategoryli::before{
+    content: "";
+    display: flex;
+    width: 1px;
+    height: 10px;
+    margin-right: 8px;
+    background-color: rgb(226, 226, 226);
+}
+.RightSectionSearchCategorya{
+    letter-spacing: -0.3px;
+    font-weight: 500;
+    color: rgb(51, 51, 51);
+    cursor: default;
+}
+.RightSectionflex{
+    display: flex;
+    flex-direction: column;
+    height: 538px;
+    color: rgb(51, 51, 51);
+    cursor: pointer;
+}

@@ -47,7 +47,8 @@ const Navigation = () => {
   const [keyword, setKeyWord] = useState("");
   
   const onSubmit = async () => {
-    window.location.href = "/search/" + keyword;
+    // window.location.href = "/search/" + keyword;
+    navigate("/search/"+ keyword);
   };
 
   const [mainCategoryToggle, setMainCategoryToggle] = useState(false);

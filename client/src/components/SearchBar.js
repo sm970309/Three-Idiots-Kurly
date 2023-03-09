@@ -19,7 +19,7 @@ function SearchBar() {
 
   return (
     <div>
-      <input
+      <button
         type="text"
         id="search"
         value={search}
