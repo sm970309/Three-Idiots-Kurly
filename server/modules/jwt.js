@@ -28,7 +28,6 @@ module.exports = {
                 return TOKEN_EXPIRED;
             } else if (err.message === 'invalid token') {
                 console.log('invalid token');
-                console.log(TOKEN_INVALID);
                 return TOKEN_INVALID;
             } else {
                 console.log("invalid token");
