@@ -183,7 +183,7 @@
 }
 .RightSectionflex{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     height: 538px;
     color: rgb(51, 51, 51);
     cursor: pointer;
