@@ -22,6 +22,7 @@ app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.static(path.join(__dirname, "..", "client/build")));
 
 app.post("/logintest", checkToken, (req, res) => {
+  console.log(`${req.id} 토큰 확인 요청`)
   res.json({ id: req.id });
 });
 
