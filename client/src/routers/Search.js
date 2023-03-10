@@ -5,12 +5,11 @@ import { useParams } from "react-router-dom";
 const Search = () => {
   const { keyword } = useParams();
 
-    return (
-      <div>
-        <Navigation />
-        <SearchForm keyword = {keyword} />
-      </div>
-    );
-  };
-  export default Search;
-  
+  return (
+    <div>
+      <Navigation />
+      <SearchForm keyword={keyword} />
+    </div>
+  );
+};
+export default Search;

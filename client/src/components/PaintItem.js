@@ -6,7 +6,6 @@ function PaintItem({ items }) {
   let navigate = useNavigate();
 
   const onClick = (event) => {
-    console.log(event.target);
     const changePage = event.target.id;
     navigate("/goods/" + changePage);
   };
