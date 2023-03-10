@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PopupDom from "../components/PopupDom";
 import PopupPostCode from "../components/PopupPostCode";
 import styles from "../css/Signup.module.css";
@@ -16,6 +16,7 @@ const SingupForm = () => {
   const [email, setUserEmail] = useState("");
   const [phone, setUserPhone] = useState("");
   const [secondAddress, setUserSecondAddress] = useState("");
+  const LoginNavigate = useNavigate();
 
   let firstAddress = JSON.parse(localStorage.getItem("address"));
 
@@ -87,6 +88,9 @@ const SingupForm = () => {
       })
       .then((response) => {
         console.log(response.data.result);
+        alert("회원가입에 성공하셨습니다.");
+        LoginNavigate("/member/login");
+
       })
       .catch((error) => {
         // Handle error.
