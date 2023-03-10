@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import SearchBar from "./SearchBar";
 import { useState } from "react";
 import styles from "../css/Navigation.module.css";
 import THREEIDIOTS_LOGO from "../img/세얼간이_logo.jpg";
@@ -37,23 +36,24 @@ const CATEGORIES = [
 let subcategorieArray = [];
 
 const Navigation = () => {
+
   let navigate = useNavigate();
 
   const onClick = (event) => {
     const changePage = event.target.id;
-    navigate("/" + changePage);
+    if(changePage === 'search'){
+      navigate("/" + changePage + "/" + keyword);
+    }else{
+      navigate("/" + changePage);
+    }
   };
 
   const [keyword, setKeyWord] = useState("");
-  
-  const onSubmit = async () => {
-    // window.location.href = "/search/" + keyword;
-    navigate("/search/"+ keyword);
-  };
 
   const [mainCategoryToggle, setMainCategoryToggle] = useState(false);
   const [subCategoryToggle, setSubCategoryToggle] = useState(false);
   const [subCategoryName, setSubCategoryName] = useState("");
+
 
   return (
     <div>
@@ -129,11 +129,9 @@ const Navigation = () => {
                 className={styles.searchBarXbutton}></button>
               <button
                 className={styles.searchBarbutton}
-                id="submit"
+                id="search"
                 type="button"
-                onClick={() =>{
-                  onSubmit();
-                }}></button>
+                onClick={onClick}></button>
             </div>
           </div>
           <div>
