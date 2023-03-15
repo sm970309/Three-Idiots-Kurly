@@ -4,8 +4,8 @@ import PaintItem from "../components/PaintItem";
 const SearchForm = ({keyword}) => {
     let items = JSON.parse(localStorage.getItem("items"));
     let resultItem = [];
-    const itemCount = 0;
-
+    let pageNum = [1 + resultItem.length/12];
+    
     const searchItem = () => {
         items &&
         items.map((item) => {
@@ -15,7 +15,6 @@ const SearchForm = ({keyword}) => {
     }
 
     searchItem();
-    console.log(resultItem[0]);
 
     return (
         <div className={styles.OutSectionDiv}>
@@ -109,15 +108,35 @@ const SearchForm = ({keyword}) => {
                     </ul>
                   </div>
                   <div className={styles.RightSectionMiddleDiv}>
-                    <a className={styles.RightSectionflex}>
                     {resultItem &&
                       resultItem.map((item) => (
+                        <a>
                           <PaintItem items={item} />
+                        </a>
                       ))}
-                    </a>
                   </div>
                   <div className={styles.RightSectionDownDiv}>
-
+                    <a className={styles.RightSectionDownNum}>
+                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAHCAQAAABwkq/rAAAAHUlEQVR42mNgAIPi/8X/kWkwA8SE0UQIMJAsCKMBBzk27fqtkcYAAAAASUVORK5CYII="></img>
+                    </a>
+                    <a className={styles.RightSectionDownNum}>
+                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAHCAQAAABqrk9lAAAAGElEQVR42mNgAIPi/8X/4QwwE5PBQJADAAKSG3cyVhtXAAAAAElFTkSuQmCC"></img>
+                    </a>
+                    <div>
+                      {
+                        pageNum.map(() =>(
+                          <a className={styles.RightSectionDownNum}>
+                            {pageNum}
+                          </a>
+                        ))
+                      }
+                    </div>
+                    <a className={styles.RightSectionDownNum}>
+                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAHCAQAAABqrk9lAAAAGUlEQVR42mMo/l/8nwECQEwCHEwGhAlRBgA2mht3SwgzrwAAAABJRU5ErkJggg=="></img>
+                    </a>
+                    <a className={styles.RightSectionDownNum}>
+                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAHCAQAAABwkq/rAAAAIElEQVR42mMo/l/8n4GBgQFGQ5kgDowmQZCwAMImhDkAb0k27Zcisn8AAAAASUVORK5CYII="></img>
+                    </a>
                   </div>
                 </div>
 
