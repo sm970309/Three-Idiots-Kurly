@@ -134,8 +134,17 @@ const Navigation = () => {
                 onClick={onClick}></button>
             </div>
           </div>
-          <div>
-            <div className={styles.tmpDiv}></div>
+          <div className={styles.searchDiv}>
+            <div className={styles.midBarImoDiv}>
+              <div className={styles.midBarImoSpotDiv}>
+              </div>
+              <button className={styles.midBarImoHeartButton}>
+              </button>
+              <div className={styles.midBarImoCartDiv}>
+                <button className={styles.midBarImoCartButton}>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

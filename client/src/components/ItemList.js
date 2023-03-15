@@ -8,8 +8,12 @@ const ItemList = () => {
   let items = JSON.parse(localStorage.getItem("items"));
 
   console.log(items);
-
-  items = items.slice(120, 150);
+  if(items==null){
+    alert("로컬 스토리지 에러");
+  }
+  else{
+    items = items.slice(120, 150);
+  }
 
   // return <PaintItem items={items} />;
   return <SwiperItems items={items} />;
